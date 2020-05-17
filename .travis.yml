@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - 12.x
+  - 12.16.1
 cache: npm
 
 # before_install:
@@ -19,7 +19,8 @@ deploy:
   provider: pages
   skip-cleanup: true
   github-token: $GITHUB_TOKEN
+  target-branch: master
   local_dir: dist
   on:
-    branch: master
+    branch: develop
 # after_deploy:

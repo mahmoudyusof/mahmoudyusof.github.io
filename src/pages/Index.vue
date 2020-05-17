@@ -6,7 +6,7 @@
         <p>Where you can find amazing articles and projects about software engineering.</p>
       </div>
       <div class="article-link">
-        <h2>Vue Forms</h2>
+        <h2>Vue Dynamic Forms</h2>
         <p>A Vue.js component library to help you create forms easily and dynamically.</p>
         <v-btn class="cta" color="accent" large tile>Visit</v-btn>
       </div>
