@@ -1,0 +1,14 @@
+{
+  "name": "mysite",
+  "private": true,
+  "scripts": {
+    "build": "gridsome build",
+    "develop": "gridsome develop",
+    "explore": "gridsome explore"
+  },
+  "dependencies": {
+    "gridsome": "^0.7.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "vuetify": "^2.2.28"
+  }
+}
