@@ -12,10 +12,14 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   appOptions.vuetify = new Vuetify({
     iconfont: "md",
     theme: {
+      options: {
+        customProperties: true,
+      },
       themes: {
         dark: {
-          primary: "#222",
-          accent: "#263238",
+          primary: "#263238",
+          accent: "#222",
+          secondary: "#37474f",
           light: "#ffffff",
         },
       },

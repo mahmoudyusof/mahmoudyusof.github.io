@@ -1,26 +1,17 @@
 <template>
   <v-app>
-    <!-- <header class="header">
-      <strong>
-        <g-link to="/">{{ $static.metadata.siteName }}</g-link>
-      </strong>
-      <nav class="nav">
-        <g-link class="nav__link" to="/">Home</g-link>
-        <g-link class="nav__link" to="/about/">About</g-link>
-      </nav>
-    </header>-->
-    <v-app-bar color="accent" dark fixed elevation="0" :elevate-on-scroll="true">
+    <v-app-bar color="primary" dark fixed elevation="0" :elevate-on-scroll="true">
       <v-toolbar-title>SembaSource</v-toolbar-title>
       <v-spacer></v-spacer>
-      <g-link tag="v-btn" class="nav-link accent" dark elevation="0" icon to="/">
+      <v-btn class="nav-link primary" dark elevation="0" icon>
         <v-icon>home</v-icon>
-      </g-link>
-      <g-link tag="v-btn" class="nav-link accent" dark elevation="0" icon to="/about">
+      </v-btn>
+      <v-btn class="nav-link primary" dark elevation="0" icon>
         <v-icon>help_outline</v-icon>
-      </g-link>
-      <g-link tag="v-btn" class="nav-link accent" dark elevation="0" icon to="/contact">
+      </v-btn>
+      <v-btn class="nav-link primary" dark elevation="0" icon>
         <v-icon>mail_outline</v-icon>
-      </g-link>
+      </v-btn>
     </v-app-bar>
     <v-container fluid color="primary" class="dark-container">
       <slot />
@@ -49,7 +40,7 @@ query {
   box-shadow: none !important;
 }
 .container.dark-container {
-  background-color: #37474f;
+  background-color: var(--v-secondary-base);
   padding-top: 70px;
 }
 </style>

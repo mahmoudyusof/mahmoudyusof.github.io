@@ -2,22 +2,34 @@
   <Layout>
     <div class="home-grid">
       <div class="article-link">
-        <h2>Welcome to SembaSource</h2>
-        <p>Where you can find amazing articles and projects about software engineering.</p>
+        <div class="shade">
+          <h2>Welcome to SembaSource</h2>
+          <p>Where you can find amazing articles and projects about software engineering.</p>
+          <v-btn
+            class="cta"
+            color="primary"
+            href="https://github.com/mahmoudyusof"
+            target="_blank"
+          >Browse My work</v-btn>
+        </div>
       </div>
       <div class="article-link">
-        <h2>Vue Dynamic Forms</h2>
-        <p>A Vue.js component library to help you create forms easily and dynamically.</p>
-        <v-btn class="cta" color="accent" large tile>Visit</v-btn>
+        <div class="shade">
+          <h2>Vue Dynamic Forms</h2>
+          <p>A Vue.js component library to help you create forms easily and dynamically.</p>
+          <v-btn class="cta" color="primary" large tile>Visit Repo</v-btn>
+        </div>
       </div>
       <div class="article-link">
-        <h2>Facial keypoint detection</h2>
-        <p>
-          In this project you will learn how to make a convolutional neural network
-          that can get the keypoints on a face detected in an image.
-          We will be using Tensorflow and OpenCV
-        </p>
-        <v-btn class="cta" color="accent" large tile>Visit</v-btn>
+        <div class="shade">
+          <h2>Facial keypoint detection</h2>
+          <p>
+            In this project you will learn how to make a convolutional neural network
+            that can get the keypoints on a face detected in an image.
+            We will be using Tensorflow and OpenCV
+          </p>
+          <v-btn class="cta" color="primary" large tile>Visit Repo</v-btn>
+        </div>
       </div>
     </div>
   </Layout>
@@ -26,7 +38,7 @@
 <script>
 export default {
   metaInfo: {
-    title: "Hello, world!"
+    title: "Home"
   }
 };
 </script>
@@ -40,26 +52,31 @@ export default {
   width: 100%;
 }
 .article-link {
+  min-height: 300px;
+  color: white;
+  background-image: url("/lion.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+.shade {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
   padding: 10px 20px;
-  min-height: 300px;
-  color: white;
-  background-image: url("/main.jpg");
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: #2223;
 }
-.article-link > h2 {
+.shade > h2 {
   font-size: 2rem;
   font-family: sans-serif;
   font-weight: lighter;
   margin-bottom: 30px;
 }
-.article-link > p {
+.shade > p {
   font-weight: 300;
   font-size: 1.1rem;
 }
@@ -75,18 +92,18 @@ export default {
   grid-column: 1 / 2;
   grid-row: 2 / 3;
 }
-.article-link > div {
+.shade > div {
   display: flex;
 }
 .cta {
   margin-top: 20px;
   width: 100%;
 }
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 550px) {
   .home-grid {
     grid-template-rows: 1fr 1fr 1fr;
   }
-  .article-link {
+  .shade {
     padding: 10px;
   }
   .article-link:nth-of-type(1) {
