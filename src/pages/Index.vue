@@ -6,10 +6,11 @@
           <h2>Welcome to SembaSource</h2>
           <p>Where you can find amazing articles and projects about software engineering.</p>
           <v-btn
-            class="cta"
-            color="primary"
+            class="cta primary"
             href="https://github.com/mahmoudyusof"
             target="_blank"
+            tile
+            large
           >Browse My work</v-btn>
         </div>
       </div>
@@ -18,8 +19,7 @@
           <h2>Vue Dynamic Forms</h2>
           <p>A Vue.js component library to help you create forms easily and dynamically.</p>
           <v-btn
-            class="cta"
-            color="primary"
+            class="cta primary"
             large
             tile
             href="https://github.com/mahmoudyusof/vue-d-form"
@@ -36,8 +36,7 @@
             We will be using Tensorflow and OpenCV
           </p>
           <v-btn
-            class="cta"
-            color="primary"
+            class="cta primary"
             large
             tile
             href="https://github.com/mahmoudyusof/facial_keypoint_detection"

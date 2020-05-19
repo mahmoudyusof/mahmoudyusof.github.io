@@ -1,12 +1,11 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dark fixed elevate-on-scroll>
+    <v-app-bar color="primary" fixed elevate-on-scroll>
       <v-toolbar-title>SembaSource</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-btn
         @click="$vuetify.goTo('#projects', {duration: 300, offset: 100})"
         class="nav-link primary"
-        dark
         elevation="0"
         icon
       >
@@ -15,7 +14,6 @@
       <v-btn
         @click="$vuetify.goTo('#about', {duration: 300, offset: 100})"
         class="nav-link primary"
-        dark
         elevation="0"
         icon
       >
@@ -24,12 +22,19 @@
       <v-btn
         @click="$vuetify.goTo('#contact', {duration: 300, offset: 100})"
         class="nav-link primary"
-        dark
         elevation="0"
         icon
       >
         <v-icon>mail_outline</v-icon>
       </v-btn>
+      <!-- <v-btn
+        @click="$vuetify.theme.dark = !$vuetify.theme.dark"
+        icon
+        elevation="0"
+        class="nav-link primary"
+      >
+        <v-icon>invert_colors</v-icon>
+      </v-btn>-->
     </v-app-bar>
     <v-container fluid color="primary" class="dark-container">
       <slot />
@@ -49,10 +54,6 @@ query {
 * {
   font-family: "Nunito", sans-serif;
   box-sizing: border-box;
-}
-.light {
-  color: white;
-  text-decoration: none;
 }
 .nav-link {
   box-shadow: none !important;

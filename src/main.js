@@ -43,6 +43,12 @@ export default function(Vue, { router, head, isClient, appOptions }) {
           secondary: "#37474f",
           light: "#ffffff",
         },
+        light: {
+          primary: "white",
+          secondary: "#eee",
+          accent: "#87979f",
+          light: "black",
+        },
       },
       dark: true,
     },
