@@ -18,7 +18,7 @@ export default function(Vue, { router, head, isClient, appOptions }) {
       themes: {
         dark: {
           primary: "#263238",
-          accent: "#222",
+          accent: "#57676f",
           secondary: "#37474f",
           light: "#ffffff",
         },
@@ -27,9 +27,16 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     },
   });
   Vue.component("Layout", DefaultLayout);
-  head.link.push({
-    rel: "stylesheet",
-    href:
-      "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&display=swap",
-  });
+  head.link.push(
+    {
+      rel: "stylesheet",
+      href:
+        "https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href:
+        "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap",
+    }
+  );
 }
