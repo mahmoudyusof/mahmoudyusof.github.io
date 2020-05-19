@@ -148,6 +148,58 @@
         <!--  -->
       </v-row>
     </section>
+
+    <section id="contact">
+      <h2>Contact me</h2>
+      <v-form @submit.prevent="submit" ref="form" v-model="valid" :lazy-validation="false">
+        <v-row>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              v-model="name"
+              :rules="nameRules"
+              filled
+              dense
+              label="Name"
+              hint="John Doe"
+              required
+              color="light"
+            ></v-text-field>
+          </v-col>
+          <v-col cols="12" sm="6">
+            <v-text-field
+              color="light"
+              v-model="email"
+              :rules="emailRules"
+              filled
+              dense
+              label="E-mail"
+              required
+              hint="john@gmail.com"
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12">
+            <v-textarea
+              v-model="message"
+              label="Message"
+              required
+              :rules="messageRules"
+              filled
+              dense
+              color="light"
+              auto-grow
+            ></v-textarea>
+          </v-col>
+        </v-row>
+
+        <v-btn @click="submit" :loading="loading" color="light--text" class="mr-4 secondary">
+          <span v-if="!(success || fail)">Submit</span>
+          <v-icon v-if="success">done</v-icon>
+          <v-icon v-if="fail">clear</v-icon>
+        </v-btn>
+      </v-form>
+    </section>
   </Layout>
 </template>
 
@@ -156,10 +208,57 @@ export default {
   metaInfo: {
     title: "Home"
   },
-  data() {
-    return {
-      advanced: 5
-    };
+  data: () => ({
+    success: false,
+    fail: false,
+    valid: true,
+    loading: false,
+    name: "",
+    nameRules: [
+      v => !!v || "Name is required",
+      v => (v && v.length <= 10) || "Name must be less than 10 characters"
+    ],
+    email: "",
+    emailRules: [
+      v => !!v || "E-mail is required",
+      v => /.+@.+\..+/.test(v) || "E-mail must be valid"
+    ],
+    message: "",
+    messageRules: [v => !!v || "Message is required"]
+  }),
+
+  methods: {
+    validate() {
+      this.$refs.form.validate();
+    },
+    submit() {
+      if (this.$refs.form.validate()) {
+        this.loading = true;
+        this.$db
+          .collection("messages")
+          .add({
+            name: this.name,
+            email: this.email,
+            message: this.message
+          })
+          .then(() => {
+            this.success = true;
+            setTimeout(() => {
+              this.success = false;
+            }, 1000);
+          })
+          .catch(e => {
+            console.log(e);
+            this.fail = true;
+            setTimeout(() => {
+              this.fail = false;
+            }, 1000);
+          })
+          .finally(() => {
+            this.loading = false;
+          });
+      }
+    }
   }
 };
 </script>
@@ -240,7 +339,8 @@ export default {
   width: 100%;
 }
 #about,
-#skills {
+#skills,
+#contact {
   background-color: var(--v-primary-base);
   margin: 10px 0;
   padding: 30px;
@@ -279,14 +379,18 @@ export default {
 .avatar {
   max-width: 300px;
   width: 100%;
-  border-radius: 10px;
+  border-radius: 50% 50% 0 50%;
 }
 .about {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-@media screen and (max-width: 550px) {
+.off {
+  opacity: 0;
+  transform: translateX(30px);
+}
+@media screen and (max-width: 600px) {
   .home-grid {
     grid-template-rows: 1fr 1fr 1fr;
   }

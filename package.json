@@ -8,6 +8,7 @@
     "test": "echo 'no tests here'"
   },
   "dependencies": {
+    "firebase": "^7.14.4",
     "gridsome": "^0.7.0",
     "material-design-icons-iconfont": "^5.0.1",
     "vuetify": "^2.2.28"

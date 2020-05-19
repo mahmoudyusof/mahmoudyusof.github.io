@@ -6,13 +6,28 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 
+import * as firebase from "firebase/app";
+import "firebase/firestore";
+
+firebase.initializeApp({
+  apiKey: "AIzaSyDDv7kQx0B8WBM6Vxm5imMFHVS3F8T8X0M",
+  authDomain: "learning-firevue.firebaseapp.com",
+  databaseURL: "https://learning-firevue.firebaseio.com",
+  projectId: "learning-firevue",
+  storageBucket: "learning-firevue.appspot.com",
+  messagingSenderId: "222886162176",
+  appId: "1:222886162176:web:fba9d6932bdaa588e98de5",
+});
+
 export default function(Vue, { router, head, isClient, appOptions }) {
+  Vue.prototype.$db = firebase.firestore();
+  Vue.prototype.$db.settings({ timestampsInSnapshots: true });
   // Set default layout as a global component
   Vue.use(Vuetify);
   appOptions.vuetify = new Vuetify({
     defaultAssets: {
       font: true,
-      icons: "md"
+      icons: "md",
     },
     icons: {
       iconfont: "md",

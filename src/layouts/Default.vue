@@ -1,15 +1,33 @@
 <template>
   <v-app>
-    <v-app-bar color="primary" dark fixed elevation="0" :elevate-on-scroll="true">
+    <v-app-bar color="primary" dark fixed elevate-on-scroll>
       <v-toolbar-title>SembaSource</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-btn class="nav-link primary" dark elevation="0" icon>
+      <v-btn
+        @click="$vuetify.goTo('#projects', {duration: 300, offset: 100})"
+        class="nav-link primary"
+        dark
+        elevation="0"
+        icon
+      >
         <v-icon>home</v-icon>
       </v-btn>
-      <v-btn class="nav-link primary" dark elevation="0" icon>
+      <v-btn
+        @click="$vuetify.goTo('#about', {duration: 300, offset: 100})"
+        class="nav-link primary"
+        dark
+        elevation="0"
+        icon
+      >
         <v-icon>help_outline</v-icon>
       </v-btn>
-      <v-btn class="nav-link primary" dark elevation="0" icon>
+      <v-btn
+        @click="$vuetify.goTo('#contact', {duration: 300, offset: 100})"
+        class="nav-link primary"
+        dark
+        elevation="0"
+        icon
+      >
         <v-icon>mail_outline</v-icon>
       </v-btn>
     </v-app-bar>
