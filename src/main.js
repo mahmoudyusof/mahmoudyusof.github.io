@@ -10,7 +10,13 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   // Set default layout as a global component
   Vue.use(Vuetify);
   appOptions.vuetify = new Vuetify({
-    iconfont: "md",
+    defaultAssets: {
+      font: true,
+      icons: "md"
+    },
+    icons: {
+      iconfont: "md",
+    },
     theme: {
       options: {
         customProperties: true,
@@ -37,6 +43,11 @@ export default function(Vue, { router, head, isClient, appOptions }) {
       rel: "stylesheet",
       href:
         "https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap",
+    },
+    {
+      rel: "stylesheet",
+      href:
+        "https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons",
     }
   );
 }

@@ -17,7 +17,14 @@
         <div class="shade">
           <h2>Vue Dynamic Forms</h2>
           <p>A Vue.js component library to help you create forms easily and dynamically.</p>
-          <v-btn class="cta" color="primary" large tile>Visit Repo</v-btn>
+          <v-btn
+            class="cta"
+            color="primary"
+            large
+            tile
+            href="https://github.com/mahmoudyusof/vue-d-form"
+            target="_blank"
+          >Visit Repo</v-btn>
         </div>
       </div>
       <div class="article-link">
@@ -28,28 +35,118 @@
             that can get the keypoints on a face detected in an image.
             We will be using Tensorflow and OpenCV
           </p>
-          <v-btn class="cta" color="primary" large tile>Visit Repo</v-btn>
+          <v-btn
+            class="cta"
+            color="primary"
+            large
+            tile
+            href="https://github.com/mahmoudyusof/facial_keypoint_detection"
+            target="_blank"
+          >Visit Repo</v-btn>
         </div>
       </div>
     </section>
 
     <section id="about">
-      <h2>Mahmoud Youssef</h2>
-      <p class="j-title">Software Engineering Student</p>
-      <p>
-        Got a challange for me?
-        <br />If it's in
-        <strong>Machine learning</strong>,
-        <strong>DataScience</strong>,
-        <strong>FrontEnd Development</strong> or
-        <strong>BackEnd Development</strong>,
-        check my skills and WHEN you see that I am the one for it, my contact form is right bellow them ,
-        so just email me.
-      </p>
-      <p>
-        Also if you like some of my projects and you have any questions I'd be glad to answer them,
-        so don't think twice, just contact me.
-      </p>
+      <v-row>
+        <v-col class="avatar-col" cols="12" md="3" lg="3" sm="12" xs="12">
+          <v-img class="avatar" src="/avatar.jpg"></v-img>
+        </v-col>
+        <v-col class="about" xl="9" md="9" lg="9" sm="12" cols="12">
+          <h2>Mahmoud Youssef</h2>
+          <p class="j-title">Software Engineering Student</p>
+          <p>
+            Got a challange for me?
+            <br />If it's in
+            <strong>Machine learning</strong>,
+            <strong>DataScience</strong>,
+            <strong>FrontEnd Development</strong> or
+            <strong>BackEnd Development</strong>,
+            check my skills and WHEN you see that I am the one for it, my contact form is right bellow them ,
+            so just email me.
+          </p>
+          <p>
+            Also if you like some of my projects and you have any questions I'd be glad to answer them,
+            so don't think twice, just contact me.
+          </p>
+        </v-col>
+      </v-row>
+    </section>
+
+    <section id="skills">
+      <h2>My Skills</h2>
+      <v-row>
+        <!--  -->
+        <v-col>
+          <div class="skill">
+            <span>JavaScript</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Python</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Vue JS</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>CSS</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Scikit learn</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+          </div>
+        </v-col>
+        <!--  -->
+        <v-col>
+          <div class="skill">
+            <span>Express JS</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Linux Terminal</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Git</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Pandas</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Laravel</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+          </div>
+        </v-col>
+        <!--  -->
+        <v-col>
+          <div class="skill">
+            <span>Keras</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Numpy</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Tensorflow</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="2"></v-rating>
+          </div>
+          <div class="skill">
+            <span>Testing (jest)</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+          </div>
+          <div class="skill">
+            <span>SQL</span>
+            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+          </div>
+        </v-col>
+        <!--  -->
+      </v-row>
     </section>
   </Layout>
 </template>
@@ -58,6 +155,11 @@
 export default {
   metaInfo: {
     title: "Home"
+  },
+  data() {
+    return {
+      advanced: 5
+    };
   }
 };
 </script>
@@ -87,6 +189,7 @@ export default {
   padding: 10px 20px;
   width: 100%;
   height: 100%;
+  background-color: #7b8d9633;
 }
 .shade::before {
   content: "";
@@ -96,7 +199,7 @@ export default {
   left: 0;
   right: 0;
   opacity: 0;
-  background-image: linear-gradient(to top, #263238aa 20%, #26323833 80%);
+  background-image: linear-gradient(to top, #263238aa 20%, #26323800 80%);
   z-index: 0;
   transition: all ease-in-out 0.3s;
 }
@@ -136,19 +239,52 @@ export default {
   margin-top: 20px;
   width: 100%;
 }
-#about {
+#about,
+#skills {
   background-color: var(--v-primary-base);
   margin: 10px 0;
   padding: 30px;
+}
+.skill {
+  display: flex;
+  height: 30px;
+  justify-content: flex-start;
+  align-items: center;
+}
+.skill span {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+  min-width: 150px;
 }
 .j-title {
   font-weight: 500;
   font-family: "Roboto", sans-serif;
   border-bottom: 1px solid var(--v-accent-base);
 }
-#about > h2 {
+#about h2,
+#skills > h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
+}
+#skills > h2 {
+  border-bottom: 1px solid var(--v-primary-lighten3);
+}
+.avatar-col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}
+.avatar {
+  max-width: 300px;
+  width: 100%;
+  border-radius: 10px;
+}
+.about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 @media screen and (max-width: 550px) {
   .home-grid {
@@ -172,8 +308,12 @@ export default {
   .home-grid {
     gap: 5px;
   }
-  #about {
+  #about,
+  #skills {
     padding: 30px 15px;
+  }
+  .skill {
+    justify-content: space-between;
   }
 }
 </style>
