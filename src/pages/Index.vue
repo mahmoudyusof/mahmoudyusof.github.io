@@ -203,11 +203,28 @@
 </template>
 
 <script>
+import firebase from "firebase/app";
+import "firebase/firestore";
+
 export default {
   metaInfo: {
     title: "Home"
   },
+  created() {
+    this.fb = firebase.initializeApp({
+      apiKey: "AIzaSyDDv7kQx0B8WBM6Vxm5imMFHVS3F8T8X0M",
+      authDomain: "learning-firevue.firebaseapp.com",
+      databaseURL: "https://learning-firevue.firebaseio.com",
+      projectId: "learning-firevue",
+      storageBucket: "learning-firevue.appspot.com",
+      messagingSenderId: "222886162176",
+      appId: "1:222886162176:web:fba9d6932bdaa588e98de5"
+    });
+    this.db = firebase.firestore();
+  },
   data: () => ({
+    db: null,
+    fb: null,
     success: false,
     fail: false,
     valid: true,
@@ -225,7 +242,6 @@ export default {
     message: "",
     messageRules: [v => !!v || "Message is required"]
   }),
-
   methods: {
     validate() {
       this.$refs.form.validate();
@@ -233,7 +249,7 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         this.loading = true;
-        this.$db
+        this.db
           .collection("messages")
           .add({
             name: this.name,
@@ -241,13 +257,13 @@ export default {
             message: this.message
           })
           .then(() => {
+            this.$refs.form.reset();
             this.success = true;
             setTimeout(() => {
               this.success = false;
             }, 1000);
           })
           .catch(e => {
-            console.log(e);
             this.fail = true;
             setTimeout(() => {
               this.fail = false;
@@ -258,6 +274,9 @@ export default {
           });
       }
     }
+  },
+  beforeDestroy() {
+    this.fb.delete();
   }
 };
 </script>
