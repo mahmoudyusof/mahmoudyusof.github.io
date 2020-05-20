@@ -69,7 +69,7 @@
           <v-col cols="12" sm="4">
             <v-list flat class="primary" dense>
               <v-subheader>Social media</v-subheader>
-              <v-list-item-group color="white">
+              <v-list-item-group color="text">
                 <v-list-item href="https://www.facebook.com/mahmoud.youssef27/" target="_blank">
                   <v-list-item-icon>
                     <v-icon>fab fa-facebook</v-icon>
@@ -105,7 +105,7 @@
           <v-col cols="12" sm="4">
             <v-list flat class="primary" dense>
               <v-subheader>Contact Information</v-subheader>
-              <v-list-item-group color="white">
+              <v-list-item-group color="text">
                 <v-list-item href="mailto:mahmoud.yusof27@gmail.com">
                   <v-list-item-icon>
                     <v-icon>mail_outline</v-icon>
@@ -129,7 +129,7 @@
           <v-col cols="12" sm="4">
             <v-list flat class="primary" dense>
               <v-subheader>Credits</v-subheader>
-              <v-list-item-group color="white">
+              <v-list-item-group color="text">
                 <v-list-item href="https://unsplash.com/@brenomachado" target="_blank">
                   <v-list-item-icon>
                     <v-icon>image</v-icon>
