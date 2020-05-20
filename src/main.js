@@ -4,7 +4,7 @@
 import DefaultLayout from "~/layouts/Default.vue";
 import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
-// import "material-design-icons-iconfont/dist/material-design-icons.css";
+import "material-design-icons-iconfont/dist/material-design-icons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
 
 import firebase from "firebase/app";

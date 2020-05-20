@@ -85,69 +85,189 @@
         <v-col>
           <div class="skill">
             <span>JavaScript</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Python</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Vue JS</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>CSS</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Scikit learn</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="4"
+            ></v-rating>
           </div>
         </v-col>
         <!--  -->
         <v-col>
           <div class="skill">
             <span>Express JS</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Linux Terminal</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Git</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Pandas</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="4"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Laravel</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
           </div>
         </v-col>
         <!--  -->
         <v-col>
           <div class="skill">
             <span>Keras</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Numpy</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="3"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Tensorflow</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="2"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="2"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>Testing (jest)</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="5"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="5"
+            ></v-rating>
           </div>
           <div class="skill">
             <span>SQL</span>
-            <v-rating background-color="accent" dense readonly color="accent lighten-3" :value="4"></v-rating>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="4"
+            ></v-rating>
           </div>
         </v-col>
         <!--  -->
@@ -296,7 +416,7 @@ export default {
   background-image: linear-gradient(to top, #fffa 20%, #fff0 80%);
 }
 .light-bg .shade {
-  background-color: #ddd3;
+  background-color: transparent;
 }
 .light-bg {
   background-image: url("/white.jpg");
