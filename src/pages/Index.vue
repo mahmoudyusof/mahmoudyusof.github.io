@@ -1,12 +1,14 @@
 <template>
   <Layout>
     <section class="home-grid" id="projects">
-      <div class="article-link">
+      <div
+        :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
+      >
         <div class="shade">
           <h2>Welcome to SembaSource</h2>
           <p>Where you can find amazing articles and projects about software engineering.</p>
           <v-btn
-            class="cta primary"
+            class="cta background text--text"
             href="https://github.com/mahmoudyusof"
             target="_blank"
             tile
@@ -14,12 +16,14 @@
           >Browse My work</v-btn>
         </div>
       </div>
-      <div class="article-link">
+      <div
+        :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
+      >
         <div class="shade">
           <h2>Vue Dynamic Forms</h2>
           <p>A Vue.js component library to help you create forms easily and dynamically.</p>
           <v-btn
-            class="cta primary"
+            class="cta background text--text"
             large
             tile
             href="https://github.com/mahmoudyusof/vue-d-form"
@@ -27,7 +31,9 @@
           >Visit Repo</v-btn>
         </div>
       </div>
-      <div class="article-link">
+      <div
+        :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
+      >
         <div class="shade">
           <h2>Facial keypoint detection</h2>
           <p>
@@ -36,7 +42,7 @@
             We will be using Tensorflow and OpenCV
           </p>
           <v-btn
-            class="cta primary"
+            class="cta background text--text"
             large
             tile
             href="https://github.com/mahmoudyusof/facial_keypoint_detection"
@@ -192,7 +198,7 @@
           </v-col>
         </v-row>
 
-        <v-btn @click="submit" :loading="loading" color="light--text" class="mr-4 secondary">
+        <v-btn @click="submit" :loading="loading" color="text--text" class="mr-4 primary">
           <span v-if="!(success || fail)">Submit</span>
           <v-icon v-if="success">done</v-icon>
           <v-icon v-if="fail">clear</v-icon>
@@ -203,28 +209,12 @@
 </template>
 
 <script>
-import firebase from "firebase/app";
-import "firebase/firestore";
-
 export default {
   metaInfo: {
     title: "Home"
   },
-  created() {
-    this.fb = firebase.initializeApp({
-      apiKey: "AIzaSyDDv7kQx0B8WBM6Vxm5imMFHVS3F8T8X0M",
-      authDomain: "learning-firevue.firebaseapp.com",
-      databaseURL: "https://learning-firevue.firebaseio.com",
-      projectId: "learning-firevue",
-      storageBucket: "learning-firevue.appspot.com",
-      messagingSenderId: "222886162176",
-      appId: "1:222886162176:web:fba9d6932bdaa588e98de5"
-    });
-    this.db = firebase.firestore();
-  },
+  created() {},
   data: () => ({
-    db: null,
-    fb: null,
     success: false,
     fail: false,
     valid: true,
@@ -249,7 +239,7 @@ export default {
     submit() {
       if (this.$refs.form.validate()) {
         this.loading = true;
-        this.db
+        this.$db
           .collection("messages")
           .add({
             name: this.name,
@@ -274,9 +264,6 @@ export default {
           });
       }
     }
-  },
-  beforeDestroy() {
-    this.fb.delete();
   }
 };
 </script>
@@ -291,11 +278,28 @@ export default {
 }
 .article-link {
   min-height: 300px;
-  color: white;
-  background-image: url("/main.jpg");
+  color: var(--v-text-base);
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
+}
+.dark-bg {
+  background-image: url("/main.jpg");
+}
+.dark-bg .shade {
+  background-color: #7b8d9633;
+}
+.dark-bg .shade::before {
+  background-image: linear-gradient(to top, #263238aa 20%, #26323800 80%);
+}
+.light-bg .shade::before {
+  background-image: linear-gradient(to top, #fffa 20%, #fff0 80%);
+}
+.light-bg .shade {
+  background-color: #ddd3;
+}
+.light-bg {
+  background-image: url("/white.jpg");
 }
 .shade {
   position: relative;
@@ -306,7 +310,6 @@ export default {
   padding: 10px 20px;
   width: 100%;
   height: 100%;
-  background-color: #7b8d9633;
 }
 .shade::before {
   content: "";
@@ -316,7 +319,6 @@ export default {
   left: 0;
   right: 0;
   opacity: 0;
-  background-image: linear-gradient(to top, #263238aa 20%, #26323800 80%);
   z-index: 0;
   transition: all ease-in-out 0.3s;
 }
@@ -359,7 +361,7 @@ export default {
 #about,
 #skills,
 #contact {
-  background-color: var(--v-primary-base);
+  background-color: var(--v-background-base);
   margin: 10px 0;
   padding: 30px;
 }
@@ -385,8 +387,9 @@ export default {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
-#skills > h2 {
-  border-bottom: 1px solid var(--v-primary-lighten3);
+#skills > h2,
+#contact > h2 {
+  border-bottom: 1px solid var(--v-accent-base);
 }
 .avatar-col {
   display: flex;
