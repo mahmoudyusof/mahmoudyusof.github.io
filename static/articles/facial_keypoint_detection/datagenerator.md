@@ -26,7 +26,7 @@ let's jump into it
 
 ---
 
-working with images is a good example for this, so let's say that you have pictures of objects that you need to localize, so your features are images and labels are (x, y, h, w) for coordinate and dimensions of the containing box with the labels and image names are stored in a csv file.
+working with images is a good example for this, so let's say that you have pictures of objects that you need to localize, so your features are images and labels are (x, y, h, w) for coordinate and dimensions of the containing box, and the labels and image names are stored in a csv file.
 
 ---
 
