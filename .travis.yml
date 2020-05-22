@@ -10,8 +10,8 @@ install:
 # before_script:
 script:
   - npm test
-  - npm run build
   - touch .nojekyll
+  - npm run build
 # after_success:
 # after_faliure:
 # after_script:
