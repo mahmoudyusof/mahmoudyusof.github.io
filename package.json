@@ -8,6 +8,7 @@
     "test": "echo 'no tests here'"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "firebase": "^7.14.4",
     "gridsome": "^0.7.0",
     "highlight.js": "^10.0.3",

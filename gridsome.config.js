@@ -5,8 +5,8 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "SembaSource",
+  siteName: "Mahmoud Youssef portfolio",
   siteUrl: "https://mahmoudyusof.github.io/semasource",
   plugins: [],
-  titleTemplate: "%s | SembaSource",
+  titleTemplate: "%s",
 };

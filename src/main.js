@@ -55,10 +55,6 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     },
   });
   Vue.component("Layout", DefaultLayout);
-  head.script.push({
-    src:
-      "https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=python&amp;skin=sunburst",
-  });
   head.link.push(
     {
       rel: "stylesheet",

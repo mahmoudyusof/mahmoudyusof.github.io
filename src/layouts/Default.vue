@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar color="primary" fixed elevate-on-scroll>
       <v-btn class="primary" depressed @click="home">
-        <v-toolbar-title>MY</v-toolbar-title>
+        <img :class="{svg: $vuetify.theme.dark}" src="/logo.svg" style="width: 70px; height: 30px;" />
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -195,5 +195,8 @@ export default {
 }
 .footer {
   position: relative !important;
+}
+.svg {
+  filter: invert(100%);
 }
 </style>
