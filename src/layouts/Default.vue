@@ -1,14 +1,16 @@
 <template>
   <v-app>
     <v-app-bar color="primary" fixed elevate-on-scroll>
-      <v-toolbar-title>SembaSource</v-toolbar-title>
+      <v-btn class="primary" depressed @click="$vuetify.goTo(0, {duration: 300, offset: 100})">
+        <v-toolbar-title>MY</v-toolbar-title>
+      </v-btn>
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{on}">
           <v-btn
             @click="$vuetify.goTo('#projects', {duration: 300, offset: 100})"
-            class="nav-link primary"
-            elevation="0"
+            class="primary"
+            depressed
             icon
             v-on="on"
           >
@@ -21,8 +23,8 @@
         <template v-slot:activator="{on}">
           <v-btn
             @click="$vuetify.goTo('#about', {duration: 300, offset: 100})"
-            class="nav-link primary"
-            elevation="0"
+            class="primary"
+            depressed
             icon
             v-on="on"
           >
@@ -35,8 +37,8 @@
         <template v-slot:activator="{on}">
           <v-btn
             @click="$vuetify.goTo('#contact', {duration: 300, offset: 100})"
-            class="nav-link primary"
-            elevation="0"
+            class="primary"
+            depressed
             icon
             v-on="on"
           >
@@ -50,8 +52,8 @@
           <v-btn
             @click="$vuetify.theme.dark = !$vuetify.theme.dark"
             icon
-            elevation="0"
-            class="nav-link primary"
+            depressed
+            class="primary"
             v-on="on"
           >
             <v-icon>invert_colors</v-icon>
@@ -70,15 +72,6 @@
             <v-list flat class="primary" dense>
               <v-subheader>Social media</v-subheader>
               <v-list-item-group color="text">
-                <v-list-item href="https://www.facebook.com/mahmoud.youssef27/" target="_blank">
-                  <v-list-item-icon>
-                    <v-icon>fab fa-facebook</v-icon>
-                  </v-list-item-icon>
-                  <v-list-item-content>
-                    <v-list-item-title>FaceBook</v-list-item-title>
-                  </v-list-item-content>
-                </v-list-item>
-
                 <v-list-item
                   href="https://www.linkedin.com/in/mahmoud-yusof-a39ab5151/"
                   target="_blank"
@@ -87,7 +80,7 @@
                     <v-icon>fab fa-linkedin</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>LinkedIn</v-list-item-title>
+                    <v-list-item-title>I share achievements</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
 
@@ -96,7 +89,16 @@
                     <v-icon>fab fa-twitter</v-icon>
                   </v-list-item-icon>
                   <v-list-item-content>
-                    <v-list-item-title>@mahmoudyusof</v-list-item-title>
+                    <v-list-item-title>I share articles</v-list-item-title>
+                  </v-list-item-content>
+                </v-list-item>
+
+                <v-list-item href="https://www.facebook.com/mahmoud.youssef27/" target="_blank">
+                  <v-list-item-icon>
+                    <v-icon>fab fa-facebook</v-icon>
+                  </v-list-item-icon>
+                  <v-list-item-content>
+                    <v-list-item-title>I share memes</v-list-item-title>
                   </v-list-item-content>
                 </v-list-item>
               </v-list-item-group>
@@ -171,9 +173,6 @@ query {
 * {
   font-family: "Nunito", sans-serif;
   box-sizing: border-box;
-}
-.nav-link {
-  box-shadow: none !important;
 }
 .container.dark-container {
   background-color: var(--v-secondary-base);

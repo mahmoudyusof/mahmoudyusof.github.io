@@ -5,15 +5,18 @@
         :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
       >
         <div class="shade">
-          <h2>Welcome to SembaSource</h2>
-          <p>Where you can find amazing articles and projects about software engineering.</p>
+          <h2>Hi, My name is Mahmoud Youssef</h2>
+          <p>Welcome to my website Where you can find amazing articles and projects about software engineering.</p>
           <v-btn
-            class="cta background text--text"
+            class="cta primary text--text"
             href="https://github.com/mahmoudyusof"
             target="_blank"
             tile
             large
-          >Browse My work</v-btn>
+          >
+            Browse My work
+            <v-icon right>fab fa-github</v-icon>
+          </v-btn>
         </div>
       </div>
       <div
@@ -23,7 +26,7 @@
           <h2>Vue Dynamic Forms</h2>
           <p>A Vue.js component library to help you create forms easily and dynamically.</p>
           <v-btn
-            class="cta background text--text"
+            class="cta primary text--text"
             large
             tile
             href="https://github.com/mahmoudyusof/vue-d-form"
@@ -41,13 +44,28 @@
             that can get the keypoints on a face detected in an image.
             We will be using Tensorflow and OpenCV
           </p>
-          <v-btn
-            class="cta background text--text"
-            large
-            tile
-            href="https://github.com/mahmoudyusof/facial_keypoint_detection"
-            target="_blank"
-          >Visit Repo</v-btn>
+          <v-row style="width: 100%; margin: 0 auto;" dense>
+            <v-col>
+              <v-btn
+                class="cta primary text--text"
+                large
+                tile
+                href="https://github.com/mahmoudyusof/facial_keypoint_detection"
+                target="_blank"
+              >
+                Visit Repo
+                <v-icon right>fab fa-github</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                class="cta primary text--text"
+                large
+                tile
+                to="/facial-keypoint-detection"
+              >Read Article</v-btn>
+            </v-col>
+          </v-row>
         </div>
       </div>
     </section>
@@ -96,7 +114,7 @@
             ></v-rating>
           </div>
           <div class="skill">
-            <span>Python</span>
+            <span>VueJS</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -108,58 +126,7 @@
             ></v-rating>
           </div>
           <div class="skill">
-            <span>Vue JS</span>
-            <v-rating
-              full-icon="star"
-              empty-icon="star_outline"
-              background-color="accent"
-              dense
-              readonly
-              color="accent lighten-3"
-              :value="5"
-            ></v-rating>
-          </div>
-          <div class="skill">
-            <span>CSS</span>
-            <v-rating
-              full-icon="star"
-              empty-icon="star_outline"
-              background-color="accent"
-              dense
-              readonly
-              color="accent lighten-3"
-              :value="5"
-            ></v-rating>
-          </div>
-          <div class="skill">
-            <span>Scikit learn</span>
-            <v-rating
-              full-icon="star"
-              empty-icon="star_outline"
-              background-color="accent"
-              dense
-              readonly
-              color="accent lighten-3"
-              :value="4"
-            ></v-rating>
-          </div>
-        </v-col>
-        <!--  -->
-        <v-col>
-          <div class="skill">
-            <span>Express JS</span>
-            <v-rating
-              full-icon="star"
-              empty-icon="star_outline"
-              background-color="accent"
-              dense
-              readonly
-              color="accent lighten-3"
-              :value="5"
-            ></v-rating>
-          </div>
-          <div class="skill">
-            <span>Linux Terminal</span>
+            <span>ExpressJS</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -171,7 +138,46 @@
             ></v-rating>
           </div>
           <div class="skill">
-            <span>Git</span>
+            <span>CSS</span>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="4"
+            ></v-rating>
+          </div>
+          <div class="skill">
+            <span>Testing (jest)</span>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
+          </div>
+        </v-col>
+        <!--  -->
+        <v-col>
+          <div class="skill">
+            <span>Python</span>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="4"
+            ></v-rating>
+          </div>
+          <div class="skill">
+            <span>Scikit learn</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -191,26 +197,11 @@
               dense
               readonly
               color="accent lighten-3"
-              :value="4"
-            ></v-rating>
-          </div>
-          <div class="skill">
-            <span>Laravel</span>
-            <v-rating
-              full-icon="star"
-              empty-icon="star_outline"
-              background-color="accent"
-              dense
-              readonly
-              color="accent lighten-3"
               :value="3"
             ></v-rating>
           </div>
-        </v-col>
-        <!--  -->
-        <v-col>
           <div class="skill">
-            <span>Keras</span>
+            <span>Tensorflow (Keras)</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -233,8 +224,35 @@
               :value="3"
             ></v-rating>
           </div>
+        </v-col>
+        <!--  -->
+        <v-col>
           <div class="skill">
-            <span>Tensorflow</span>
+            <span>Git</span>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
+          </div>
+          <div class="skill">
+            <span>Linux Terminal</span>
+            <v-rating
+              full-icon="star"
+              empty-icon="star_outline"
+              background-color="accent"
+              dense
+              readonly
+              color="accent lighten-3"
+              :value="3"
+            ></v-rating>
+          </div>
+          <div class="skill">
+            <span>Firebase</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -246,7 +264,7 @@
             ></v-rating>
           </div>
           <div class="skill">
-            <span>Testing (jest)</span>
+            <span>MongoDB</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -254,11 +272,11 @@
               dense
               readonly
               color="accent lighten-3"
-              :value="5"
+              :value="3"
             ></v-rating>
           </div>
           <div class="skill">
-            <span>SQL</span>
+            <span>Laravel</span>
             <v-rating
               full-icon="star"
               empty-icon="star_outline"
@@ -266,7 +284,7 @@
               dense
               readonly
               color="accent lighten-3"
-              :value="4"
+              :value="2"
             ></v-rating>
           </div>
         </v-col>
@@ -495,7 +513,7 @@ export default {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 1.2rem;
-  min-width: 150px;
+  min-width: 165px;
 }
 .j-title {
   font-weight: 500;
