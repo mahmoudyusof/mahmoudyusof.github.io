@@ -69,11 +69,11 @@ Now let's define some special methods starting with the one called in the initia
 ```python
 
 def on_epoch_end(self):
-  # just create an array of indecies
+  # just create an array of indices
   # for all of the entries in the dataset
-  self.indecies = np.arange(len(self.df))
+  self.indices = np.arange(len(self.df))
   if self.shuffle:
-    np.random.shuffle(self.indecies)
+    np.random.shuffle(self.indices)
 ```
 
 ---
@@ -103,7 +103,7 @@ generator[3:5]
 
 and in this function we shall load and preprocess the images.  
 You might think splitting this into multiple functions would be a good idea ... and you'd totally be right.  
-This fucntion should return a preprocessed batch of data
+This function should return a preprocessed batch of data
 
 ---
 
@@ -117,19 +117,19 @@ def __getitem__(self):
   # (x, y, h, w)
   y = np.empty((self.batch_size, 4, 1))
 
-  # get the indecies of the requested batch
-  indecies = self.indecies[idx*self.batch_size:(idx+1)*self.batch_size]
+  # get the indices of the requested batch
+  indices = self.indices[idx*self.batch_size:(idx+1)*self.batch_size]
 
-  for index in range(len(indecies)):
+  for index in range(len(indices)):
     img_path = os.path.join(self.base_dir,
-                self.df.iloc[indecies[index], 0])
+                self.df.iloc[indices[index], 0])
 
     img = mpimg.imread()
 
     ## this is where you preprocess the image
     ## make sure to resize it to be self.output_size
 
-    label = self.df.iloc[indecies[index], 1:].to_numpy()
+    label = self.df.iloc[indices[index], 1:].to_numpy()
     ## if you have any preprocessing for
     ## the labels too do it here
 
@@ -163,7 +163,7 @@ train_gen = DataGenerator("data.csv",
 
 # now let's train the model
 model.fit(train_gen, epochs=5, ...)
-#  note you could also make a valdation generator and pass it here like normal datasets
+#  note you could also make a validation generator and pass it here like normal datasets
 
 # back in the days you had to do this
 # model.fit_generator(train_gen, ...)
