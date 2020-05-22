@@ -1,9 +1,9 @@
 <template>
   <Layout :article="true">
     <v-container>
-      <v-skeleton-loader loading color="primary" v-if="loading" type="article"></v-skeleton-loader>
+      <v-skeleton-loader loading class="primary" v-if="loading" type="article"></v-skeleton-loader>
       <br />
-      <v-skeleton-loader loading color="primary" v-if="loading" type="article"></v-skeleton-loader>
+      <v-skeleton-loader loading class="primary" v-if="loading" type="article"></v-skeleton-loader>
       <div v-html="md"></div>
     </v-container>
   </Layout>
@@ -61,6 +61,9 @@ hr {
   color: transparent;
   border-radius: 50%;
   margin-bottom: 10px;
+}
+pre > code {
+  width: 100%;
 }
 code {
   padding: 3px 10px;

@@ -17,7 +17,7 @@ If you're dealing with a small dataset, that might work, but that is just a wast
 
 Python generators are lazy which means they are iterables that give you the data upon request, unlike regular lists that just store the data in memory all the time.
 
-tensorflow keras has a `Sequence` class that can be used for this purpose.  
+tensorflow keras has a `Sequence` class that can be used for this purpose. <a class="mdlink" href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence">Sequence Class API Reference</a>  
 let's jump into it
 
 ---
