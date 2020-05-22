@@ -11,6 +11,7 @@ install:
 script:
   - npm test
   - npm run build
+  - touch .nojekyll
 # after_success:
 # after_faliure:
 # after_script:
