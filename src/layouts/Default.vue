@@ -1,25 +1,20 @@
 <template>
   <v-app>
     <v-app-bar color="primary" fixed elevate-on-scroll>
-      <v-btn class="primary" depressed @click="$vuetify.goTo(0, {duration: 300, offset: 100})">
+      <v-btn class="primary" depressed @click="home">
         <v-toolbar-title>MY</v-toolbar-title>
       </v-btn>
+
       <v-spacer></v-spacer>
       <v-tooltip bottom>
         <template v-slot:activator="{on}">
-          <v-btn
-            @click="$vuetify.goTo('#projects', {duration: 300, offset: 100})"
-            class="primary"
-            depressed
-            icon
-            v-on="on"
-          >
+          <v-btn @click="home" class="primary" depressed icon v-on="on">
             <v-icon>home</v-icon>
           </v-btn>
         </template>
         <span>Home</span>
       </v-tooltip>
-      <v-tooltip bottom>
+      <v-tooltip v-if="!article" bottom>
         <template v-slot:activator="{on}">
           <v-btn
             @click="$vuetify.goTo('#about', {duration: 300, offset: 100})"
@@ -33,7 +28,7 @@
         </template>
         <span>About</span>
       </v-tooltip>
-      <v-tooltip bottom>
+      <v-tooltip v-if="!article" bottom>
         <template v-slot:activator="{on}">
           <v-btn
             @click="$vuetify.goTo('#contact', {duration: 300, offset: 100})"
@@ -168,6 +163,26 @@ query {
   }
 }
 </static-query>
+
+<script>
+export default {
+  props: {
+    article: {
+      type: Boolean,
+      default: false
+    }
+  },
+  methods: {
+    home() {
+      if (this.article) {
+        this.$router.push("/");
+      } else {
+        this.$vuetify.goTo("#projects", { duration: 300, offset: 100 });
+      }
+    }
+  }
+};
+</script>
 
 <style>
 * {

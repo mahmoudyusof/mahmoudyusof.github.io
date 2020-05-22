@@ -10,10 +10,6 @@ import "@fortawesome/fontawesome-free/css/all.css";
 import firebase from "firebase/app";
 import "firebase/firestore";
 
-import VueSimpleMarkdown from "vue-simple-markdown";
-// You need a specific loader for CSS files like https://github.com/webpack/css-loader
-import "vue-simple-markdown/dist/vue-simple-markdown.css";
-
 export default function(Vue, { router, head, isClient, appOptions }) {
   firebase.initializeApp({
     apiKey: "AIzaSyDDv7kQx0B8WBM6Vxm5imMFHVS3F8T8X0M",
@@ -29,7 +25,6 @@ export default function(Vue, { router, head, isClient, appOptions }) {
   // Set default layout as a global component
   Vue.use(Vuetify);
 
-  Vue.use(VueSimpleMarkdown);
   appOptions.vuetify = new Vuetify({
     defaultAssets: {
       font: true,
@@ -60,6 +55,10 @@ export default function(Vue, { router, head, isClient, appOptions }) {
     },
   });
   Vue.component("Layout", DefaultLayout);
+  head.script.push({
+    src:
+      "https://cdn.rawgit.com/google/code-prettify/master/loader/run_prettify.js?lang=python&amp;skin=sunburst",
+  });
   head.link.push(
     {
       rel: "stylesheet",

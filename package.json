@@ -10,8 +10,9 @@
   "dependencies": {
     "firebase": "^7.14.4",
     "gridsome": "^0.7.0",
+    "highlight.js": "^10.0.3",
+    "marked": "^1.1.0",
     "material-design-icons-iconfont": "^5.0.1",
-    "vue-simple-markdown": "^1.1.4",
     "vuetify": "^2.2.28"
   },
   "devDependencies": {
