@@ -7,7 +7,7 @@ cache: npm
 install:
   - npm ci
 
-# before_script:
+# before_script: don't know if we should do it here
 script:
   - npm test
   - touch .nojekyll
