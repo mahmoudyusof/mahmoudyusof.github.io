@@ -8,6 +8,7 @@
     "test": "echo 'no tests here'"
   },
   "dependencies": {
+    "@gridsome/plugin-google-analytics": "^0.1.0",
     "axios": "^0.19.2",
     "firebase": "^7.14.4",
     "gridsome": "^0.7.0",

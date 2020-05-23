@@ -7,6 +7,13 @@
 module.exports = {
   siteName: "Mahmoud Youssef portfolio",
   siteUrl: "https://mahmoudyusof.github.io/semasource",
-  plugins: [],
+  plugins: [
+    {
+      use: "@gridsome/plugin-google-analytics",
+      options: {
+        id: "UA-167481228-1",
+      },
+    },
+  ],
   titleTemplate: "%s",
 };
