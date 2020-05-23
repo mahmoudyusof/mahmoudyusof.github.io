@@ -31,6 +31,18 @@ so your features are images and labels are (x, y, h, w) for coordinate and dimen
 
 ---
 
+## Data
+
+---
+
+| image_file &nbsp; &nbsp; | x &nbsp; &nbsp; | y &nbsp; &nbsp; | w &nbsp; &nbsp; | h &nbsp; &nbsp; |
+| ------------------------ | --------------- | --------------- | --------------- | --------------- |
+| file1.png                | 10              | 20              | 50              | 50              |
+| ...                      | ...             | ...             | ...             | ...             |
+| ...                      | ...             | ...             | ...             | ...             |
+
+---
+
 ## Code
 
 let's define an initializer

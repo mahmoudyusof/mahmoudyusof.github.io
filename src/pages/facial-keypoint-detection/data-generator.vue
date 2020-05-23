@@ -76,6 +76,9 @@ code {
 .mdlink {
   color: var(--v-text-base) !important;
 }
+.md-container {
+  padding: 5px 30px;
+}
 .md-container > h1,
 .md-container > h2,
 .md-container > h3,
@@ -88,5 +91,14 @@ code {
 }
 .md-container > p {
   font-weight: 300;
+}
+.md-container table,
+.md-container table th,
+.md-container table td {
+  border: 1px solid var(--v-text-base);
+  padding: 5px;
+}
+.md-container table {
+  border-collapse: collapse;
 }
 </style>
