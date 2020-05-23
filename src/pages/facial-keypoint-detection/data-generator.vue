@@ -12,7 +12,7 @@
 <script>
 import marked from "marked";
 import highlight from "highlight.js";
-import "highlight.js/styles/github.css";
+import "highlight.js/styles/vs2015.css";
 import axios from "axios";
 export default {
   metaInfo: {
@@ -33,6 +33,11 @@ export default {
         property: "og:description",
         content:
           "explaining how to load batches of data into memory instead of the entire dataset for more effeciency"
+      },
+      {
+        property: "og:url",
+        content:
+          "https://mahmoudyusof.github.io/facial-keypoint-detection/data-generator/"
       }
     ]
   },
@@ -65,7 +70,11 @@ export default {
 hr {
   color: transparent;
   border-radius: 50%;
-  margin-bottom: 10px;
+  margin-bottom: 35px;
+}
+code {
+  background-color: #222 !important;
+  color: #ddd !important;
 }
 pre > code {
   width: 100%;
@@ -85,9 +94,11 @@ code {
 .md-container > h4,
 .md-container > h5,
 .md-container > h6,
-.md-container > p {
+.md-container > p,
+.md-container > ul {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
+  margin-bottom: 10px;
 }
 .md-container > p {
   font-weight: 300;
