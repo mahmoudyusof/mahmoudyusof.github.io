@@ -31,7 +31,10 @@
             tile
             href="https://github.com/mahmoudyusof/vue-d-form"
             target="_blank"
-          >Visit Repo</v-btn>
+          >
+            Visit Repo
+            <v-icon right>fab fa-github</v-icon>
+          </v-btn>
         </div>
       </div>
       <div
@@ -73,7 +76,7 @@
     <section id="about">
       <v-row>
         <v-col class="avatar-col" cols="12" md="3" lg="3" sm="12" xs="12">
-          <v-img class="avatar" src="/avatar.jpg"></v-img>
+          <g-image class="avatar" src="../assets/avatar.jpg"></g-image>
         </v-col>
         <v-col class="about" xl="9" md="9" lg="9" sm="12" cols="12">
           <h2>Mahmoud Youssef</h2>
@@ -422,7 +425,7 @@ export default {
   background-attachment: fixed;
 }
 .dark-bg {
-  background-image: url("/main.jpg");
+  background-image: url("../assets/main.jpg");
 }
 .dark-bg .shade {
   background-color: #7b8d9633;
@@ -437,7 +440,7 @@ export default {
   background-color: transparent;
 }
 .light-bg {
-  background-image: url("/white.jpg");
+  background-image: url("../assets/white.jpg");
 }
 .shade {
   position: relative;

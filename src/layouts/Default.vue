@@ -2,7 +2,11 @@
   <v-app>
     <v-app-bar color="primary" fixed elevate-on-scroll>
       <v-btn class="primary" depressed @click="home">
-        <img :class="{svg: $vuetify.theme.dark}" src="/logo.svg" style="width: 70px; height: 30px;" />
+        <img
+          :class="{svg: $vuetify.theme.dark}"
+          src="../assets/logo.svg"
+          style="width: 70px; height: 30px;"
+        />
       </v-btn>
 
       <v-spacer></v-spacer>
@@ -197,6 +201,6 @@ export default {
   position: relative !important;
 }
 .svg {
-  filter: invert(100%);
+  filter: invert(100%) grayscale(100%);
 }
 </style>

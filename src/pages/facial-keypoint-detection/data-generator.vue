@@ -1,10 +1,10 @@
 <template>
   <Layout :article="true">
-    <v-container>
+    <v-container class="background">
       <v-skeleton-loader loading class="primary" v-if="loading" type="article"></v-skeleton-loader>
       <br />
       <v-skeleton-loader loading class="primary" v-if="loading" type="article"></v-skeleton-loader>
-      <div v-html="md"></div>
+      <div class="md-container" v-html="md"></div>
     </v-container>
   </Layout>
 </template>
@@ -24,6 +24,10 @@ export default {
     meta: [
       { property: "og:type", content: "article" },
       { property: "og:title", content: "Data Generators in tensorflow" },
+      {
+        property: "og:image",
+        content: "../../assets/articles/data-generator.jpg"
+      },
       {
         property: "og:description",
         content:
@@ -70,5 +74,18 @@ code {
 }
 .mdlink {
   color: var(--v-text-base) !important;
+}
+.md-container > h1,
+.md-container > h2,
+.md-container > h3,
+.md-container > h4,
+.md-container > h5,
+.md-container > h6,
+.md-container > p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+}
+.md-container > p {
+  font-weight: 300;
 }
 </style>
