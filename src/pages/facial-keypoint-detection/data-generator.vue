@@ -26,7 +26,7 @@ export default {
       { property: "og:title", content: "Data Generators in tensorflow" },
       {
         property: "og:image",
-        content: "/articles/facial-keypoint-detection/data-generator.jpg"
+        content: "/articles/facial_keypoint_detection/data-generator.jpg"
       },
       {
         property: "og:description",
