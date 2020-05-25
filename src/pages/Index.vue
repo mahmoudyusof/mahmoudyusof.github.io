@@ -444,6 +444,7 @@ export default {
 }
 .shade {
   position: relative;
+  min-height: 300px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -455,6 +456,7 @@ export default {
 .shade::before {
   content: "";
   position: absolute;
+  display: block;
   top: 100%;
   bottom: 0;
   left: 0;
@@ -463,7 +465,7 @@ export default {
   z-index: 0;
   transition: all ease-in-out 0.3s;
 }
-.shade:hover:before {
+.shade:hover::before {
   top: 0;
   opacity: 1;
 }

@@ -42,8 +42,9 @@ export default {
 
 <style>
 hr {
-  color: transparent;
-  border-radius: 50%;
+  color: transparent !important;
+  background-color: transparent !important;
+  border: none;
   margin-bottom: 35px;
 }
 code::before,
