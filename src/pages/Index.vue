@@ -65,7 +65,7 @@
                 class="cta primary text--text"
                 large
                 tile
-                to="/facial-keypoint-detection"
+                to="/facial-keypoint-detection/data-generator"
               >Read Article</v-btn>
             </v-col>
           </v-row>

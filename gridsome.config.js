@@ -14,6 +14,24 @@ module.exports = {
         id: "UA-167481228-1",
       },
     },
+    {
+      use: "@gridsome/source-filesystem",
+      options: {
+        path: "./articles/**/*.md",
+        typeName: "Article",
+        remark: {
+          plugins: ["@gridsome/remark-prismjs"],
+        },
+      },
+    },
   ],
+  templates: {
+    Article: "/:project/:slug",
+  },
+  transformers: {
+    remark: {
+      plugins: [["@gridsome/remark-prismjs", { transformInlineCode: false }]],
+    },
+  },
   titleTemplate: "%s",
 };

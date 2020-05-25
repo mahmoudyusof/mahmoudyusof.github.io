@@ -6,6 +6,7 @@ import Vuetify from "vuetify";
 import "vuetify/dist/vuetify.min.css";
 import "material-design-icons-iconfont/dist/material-design-icons.css";
 import "@fortawesome/fontawesome-free/css/all.css";
+import "prismjs/themes/prism-tomorrow.css";
 
 import firebase from "firebase/app";
 import "firebase/firestore";

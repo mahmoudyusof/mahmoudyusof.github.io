@@ -1,3 +1,13 @@
+---
+project: facial-keypoint-detection
+slug: data-generator
+title: "Data Generators In Tensorflow"
+type: article
+description: explaining how to load batches of data into memory instead of the entire dataset for more effeciency
+image: https://mahmoudyusof.github.io/seo_images/data-generator.jpg
+url: https://mahmoudyusof.github.io/facial-keypoint-detection/data-generator/
+---
+
 # How to use data generators in tensorflow
 
 ---
@@ -43,6 +53,7 @@ It will also take the output shape of the batch
 
 ```python
 
+
 import numpy as np
 import pandas as pd
 import matplotlib.image as mpimg
@@ -78,6 +89,7 @@ We call this method in the initializer because we need the indeces attribute to 
 
 ```python
 
+
 def on_epoch_end(self):
   self.indices = np.arange(len(self.df))
   if self.shuffle:
@@ -91,6 +103,7 @@ def on_epoch_end(self):
 Now we need to define the length of the data, which is not the number of entries as you might think, it's actually the number of batches, this needs to be accessible by the `len` function in python so we need to define the `__len__` method.
 
 ```python
+
 
 def __len__(self):
   return int(len(self.df) / self.batch_size)
@@ -110,6 +123,7 @@ You might think splitting this into multiple functions would be a good idea ... 
 This function should return a preprocessed batch of data
 
 ```python
+
 
 def __getitem__(self, idx):
   ## Initializing Batch
@@ -149,6 +163,7 @@ Now you are ready to fit the model to this generator. You can also easily make a
 
 ```python
 
+
 from tensorflow.keras.models import Sequential
 
 model = Sequential([
@@ -178,6 +193,7 @@ model.fit(train_gen, epochs=5, ...)
 ## The complete code
 
 ```python
+
 
 class DataGenerator(Sequence):
 
