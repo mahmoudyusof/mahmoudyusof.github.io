@@ -23,13 +23,13 @@
         :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
       >
         <div class="shade">
-          <h2>Vue Dynamic Forms</h2>
-          <p>A Vue.js component library to help you create forms easily and dynamically.</p>
+          <h2>Neural Style Transfer</h2>
+          <p>Using a pretrained CNN to repaint an image in the style of a different image. Want to see how you'd look as a Van Gogh painting? check out this project.</p>
           <v-btn
             class="cta primary text--text"
             large
             tile
-            href="https://github.com/mahmoudyusof/vue-d-form"
+            href="https://github.com/mahmoudyusof/neural-style-transfer"
             target="_blank"
           >
             Visit Repo

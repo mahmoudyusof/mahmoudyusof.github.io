@@ -60,6 +60,7 @@ pre > code {
   width: 100%;
   padding: 10px;
   box-shadow: none !important;
+  overflow-x: scroll;
 }
 code {
   padding: 1px 10px;
@@ -99,5 +100,10 @@ code {
 }
 .token.operator {
   background-color: transparent !important;
+}
+@media screen and (max-width: 500px) {
+  .md-container {
+    padding: 5px;
+  }
 }
 </style>
