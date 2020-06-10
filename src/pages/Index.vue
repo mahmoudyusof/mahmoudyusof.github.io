@@ -356,10 +356,14 @@ export default {
     meta: [
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Mahmoud Youssef's portfolio" },
-      { property: "og:image", content: "https://mahmoudyusof.github.io/seo_images/avatar.jpg" },
+      {
+        property: "og:image",
+        content: "https://mahmoudyusof.github.io/seo_images/avatar.jpg"
+      },
       {
         property: "og:description",
-        content: "Here I share projects and articles related to deep learning, computer vision and THE AWESOME VUE.JS"
+        content:
+          "Here I share projects and articles related to deep learning, computer vision and THE AWESOME VUE.JS, follow me on linkedin, twitter or github to get the latest updates"
       },
       { property: "og:url", content: "https://mahmoudyusof.github.io" }
     ]
