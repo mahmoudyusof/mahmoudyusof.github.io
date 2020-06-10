@@ -352,7 +352,17 @@
 <script>
 export default {
   metaInfo: {
-    title: "Home"
+    title: "Home",
+    meta: [
+      { property: "og:type", content: "website" },
+      { property: "og:title", content: "Mahmoud Youssef's portfolio" },
+      { property: "og:image", content: "https://mahmoudyusof.github.io/seo_images/avatar.jpg" },
+      {
+        property: "og:description",
+        content: "Here I share projects and articles related to deep learning, computer vision and THE AWESOME VUE.JS"
+      },
+      { property: "og:url", content: "https://mahmoudyusof.github.io" }
+    ]
   },
   created() {},
   data: () => ({
