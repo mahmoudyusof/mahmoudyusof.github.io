@@ -6,7 +6,11 @@
       >
         <div class="shade">
           <h2>Hi, My name is Mahmoud Youssef</h2>
-          <p>Welcome to my website Where you can find amazing articles and projects about software engineering.</p>
+          <p>
+            Welcome to my website Where you can find amazing articles and projects about software engineering.
+            I would recommend visiting my repositories and reading the source code since most of it is well documented and could be very helpful to you.
+            I hope you find some of my projects and articles useful, Have a great life :)
+          </p>
           <v-btn
             class="cta primary text--text"
             href="https://github.com/mahmoudyusof"
@@ -17,6 +21,36 @@
             Browse My work
             <v-icon right>fab fa-github</v-icon>
           </v-btn>
+        </div>
+      </div>
+      <div
+        :class="{'article-link': true, 'dark-bg': $vuetify.theme.dark, 'light-bg': !$vuetify.theme.dark}"
+      >
+        <div class="shade">
+          <h2>Sorting Algorithms Visualizer</h2>
+          <p>I really love Vue.js and I also love algorithms visualization, In this project I get to use Vue.js to show you four of the most popular sorting algorithms in action.</p>
+          <v-row style="width: 100%; margin: 0 auto;" dense>
+            <v-col>
+              <v-btn
+                class="cta primary text--text"
+                large
+                tile
+                href="https://github.com/mahmoudyusof/sorting-visualization-vue"
+                target="_blank"
+              >
+                Visit Repo
+                <v-icon right>fab fa-github</v-icon>
+              </v-btn>
+            </v-col>
+            <v-col>
+              <v-btn
+                class="cta primary text--text"
+                large
+                tile
+                href="https://mahmoudyusof.github.io/sorting-visualization-vue"
+              >Play around</v-btn>
+            </v-col>
+          </v-row>
         </div>
       </div>
       <div
@@ -426,7 +460,7 @@ export default {
 <style>
 .home-grid {
   display: grid;
-  grid-template-columns: 5fr 4fr;
+  grid-template-columns: repeat(12, 1fr);
   grid-template-rows: 1fr 1fr;
   gap: 10px;
   width: 100%;
@@ -456,7 +490,7 @@ export default {
 .light-bg {
   background-image: url("../assets/white.jpg");
 }
-.shade {
+/* .shade {
   position: relative;
   min-height: 300px;
   display: flex;
@@ -466,6 +500,16 @@ export default {
   padding: 10px 20px;
   width: 100%;
   height: 100%;
+} */
+.shade {
+  position: relative;
+  min-height: 300px;
+  padding: 10px 20px;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  align-content: space-between;
 }
 .shade::before {
   content: "";
@@ -497,15 +541,19 @@ export default {
   z-index: 1;
 }
 .article-link:nth-of-type(1) {
-  grid-column: 1 / 2;
+  grid-column: 1 / 8;
   grid-row: 1 / 2;
 }
 .article-link:nth-of-type(2) {
-  grid-column: 2 / 3;
-  grid-row: 1 / 3;
+  grid-column: 8 / 13;
+  grid-row: 1 / 2;
 }
 .article-link:nth-of-type(3) {
-  grid-column: 1 / 2;
+  grid-column: 1 / 6;
+  grid-row: 2 / 3;
+}
+.article-link:nth-of-type(4) {
+  grid-column: 6 / 13;
   grid-row: 2 / 3;
 }
 .shade > div {
@@ -570,22 +618,26 @@ export default {
 }
 @media screen and (max-width: 600px) {
   .home-grid {
-    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
   }
   .shade {
     padding: 15px;
   }
   .article-link:nth-of-type(1) {
-    grid-column: 1 / 3;
+    grid-column: 1 / 13;
     grid-row: 1 / 2;
   }
-  .article-link:nth-of-type(3) {
-    grid-column: 1 / 3;
+  .article-link:nth-of-type(4) {
+    grid-column: 1 / 13;
     grid-row: 2 / 3;
   }
-  .article-link:nth-of-type(2) {
-    grid-column: 1 / 3;
+  .article-link:nth-of-type(3) {
+    grid-column: 1 / 13;
     grid-row: 3 / 4;
+  }
+  .article-link:nth-of-type(2) {
+    grid-column: 1 / 13;
+    grid-row: 4 / 5;
   }
   .home-grid {
     gap: 5px;
