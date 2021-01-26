@@ -107,6 +107,34 @@
       </div>
     </section>
 
+    <section id="articles">
+      <v-card
+        class="primary"
+        color="text--text"
+        tile
+        elevation="0"
+      >
+        <v-list color="text--text" class="primary" dense>
+          <v-subheader>Articles</v-subheader>
+          <v-list-item-group>
+            <v-list-item
+              v-for="(edge, i) in $page.allArticle.edges"
+              :key="i"
+              link
+              :to="edge.node.path"
+            >
+              <v-list-item-icon>
+                <v-icon>far fa-file-alt</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title v-text="edge.node.title"></v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </section>
+
     <section id="about">
       <v-row>
         <v-col class="avatar-col" cols="12" md="3" lg="3" sm="12" xs="12">
@@ -383,6 +411,20 @@
   </Layout>
 </template>
 
+<page-query>
+query{
+  allArticle(sortBy: "id", order:DESC){
+    edges{
+      node{
+        path,
+        slug,
+        title
+      }
+    }
+  }
+}
+</page-query>
+
 <script>
 export default {
   metaInfo: {
@@ -402,7 +444,9 @@ export default {
       { property: "og:url", content: "https://mahmoudyusof.github.io" }
     ]
   },
-  created() {},
+  created() {
+    // console.log(this.$page)
+  },
   data: () => ({
     success: false,
     fail: false,
@@ -564,6 +608,7 @@ export default {
   width: 100%;
 }
 #about,
+#articles,
 #skills,
 #contact {
   background-color: var(--v-background-base);
