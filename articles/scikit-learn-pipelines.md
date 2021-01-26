@@ -4,7 +4,7 @@ slug: scikit-learn-pipelines
 title: "A Comprehensive Guide For scikit-learn Pipelines"
 type: article
 description: Going through a step by step guide for building machine learning pipelines for data preprocessing and inference, also covering how preprocess different columns with different transformers, how to add custom transformers, and how to save and load complete pipelines
-image: https://mahmoudyusof.github.io/seo_images/data-generator.jpg
+image: https://mahmoudyusof.github.io/seo_images/sklearn-pipelines.jpg
 url: https://mahmoudyusof.github.io/scikit-learn-pipelines/
 ---
 
