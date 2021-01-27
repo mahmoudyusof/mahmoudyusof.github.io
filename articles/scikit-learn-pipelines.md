@@ -5,7 +5,7 @@ title: "A Comprehensive Guide For scikit-learn Pipelines"
 type: article
 description: Going through a step by step guide for building machine learning pipelines for data preprocessing and inference, also covering how preprocess different columns with different transformers, how to add custom transformers, and how to save and load complete pipelines
 image: https://mahmoudyusof.github.io/seo_images/sklearn-pipelines.jpg
-url: https://mahmoudyusof.github.io/scikit-learn-pipelines/
+url: https://mahmoudyusof.github.io/general/scikit-learn-pipelines/
 ---
 
 # A Comprehensive Guide For scikit-learn Pipelines
@@ -22,7 +22,7 @@ There are plenty of reasons why you might want to use a pipeline for machine lea
 
 ---
 ## How?
-Alright, now let's get down to business. In this article we'll use a fairly easy and old problem as an example, which is the [Regression problem for predicting housing prices](https://www.kaggle.com/c/home-data-for-ml-course).  
+Alright, now let's get down to business. In this article we'll use a fairly easy and old problem as an example, which is the <a class="mdlink" href="https://www.kaggle.com/c/home-data-for-ml-course">Regression problem for predicting housing prices</a>.  
 Download the data and you should have a `train.csv` file and a `test.csv` file, we'll load both using pandas.
 
 ---
@@ -74,7 +74,7 @@ test_features = test_df[nominal + ordinal + numerical]
 
 ```
 
-If you want to see the entire selection process and EDA fully explained, you can see the notebook [here](https://www.kaggle.com/mahmoud1youssef/housing-prices-full-solution)  
+If you want to see the entire selection process and EDA fully explained, you can see the notebook <a class="mdlink" href="https://www.kaggle.com/mahmoud1youssef/housing-prices-full-solution">here</a>  
 
 ---
 ### Preprocessing
@@ -91,7 +91,7 @@ Now let's choose a preprocessing plan, a very straight forward one is the follow
     - Use Standard Scaling
 
 As you may see, each family of features has its own unique way of getting processed. Let's create a Pipeline for each family.  
-We can do so by using the [sklearn.pipeline.Pipeline](https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html) Object
+We can do so by using the <a class="mdlink" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html">sklearn.pipeline.Pipeline</a> Object
 
 ```python
 from sklearn.pipeline import Pipeline
@@ -115,7 +115,7 @@ numerical_pipeline = Pipeline([
 ```
 
 Now let's join all of the above in one pipeline that targets each column with its family's pipeline.  
-We can do so using the [sklearn.compose.ColumnTranformer](https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html?highlight=columntransformer#sklearn.compose.ColumnTransformer) Object
+We can do so using the <a class="mdlink" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html?highlight=columntransformer#sklearn.compose.ColumnTransformer">sklearn.compose.ColumnTranformer</a> Object
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -165,7 +165,7 @@ predictions = complete_pipeline.predict(test_features)
 ---
 ## Saving and Loading Pipelines
 Now we want to save the entire preprocessing parameters and model parameters of this pipeline to disk and load it whenever needed.  
-We are going to use [joblib](https://joblib.readthedocs.io/en/latest/) for this **JOB** ... get it? ... sorry.
+We are going to use <a href="https://joblib.readthedocs.io/en/latest/" class="mdlink">joblib</a> for this **JOB** ... get it? ... sorry.
 
 ### Save the pipeline
 We are going to save the model as a pickle (.pkl) file. The code is fairly simple.
