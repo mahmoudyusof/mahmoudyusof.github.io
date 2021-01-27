@@ -430,6 +430,7 @@ export default {
   metaInfo: {
     title: "Home",
     meta: [
+      { name: "google-site-verification", content: "bbqKmT64zDimsKRiscHf_q-HmPAOJ6XpCynYCsB-uRE"},
       { property: "og:type", content: "website" },
       { property: "og:title", content: "Mahmoud Youssef's portfolio" },
       {
