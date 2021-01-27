@@ -115,7 +115,7 @@ numerical_pipeline = Pipeline([
 ```
 
 Now let's join all of the above in one pipeline that targets each column with its family's pipeline.  
-We can do so using the <a class="mdlink" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html?highlight=columntransformer#sklearn.compose.ColumnTransformer">sklearn.compose.ColumnTranformer</a> Object
+We can do so using the <a class="mdlink" href="https://scikit-learn.org/stable/modules/generated/sklearn.compose.ColumnTransformer.html?highlight=columntransformer#sklearn.compose.ColumnTransformer">sklearn.compose.ColumnTransformer</a> Object
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -144,7 +144,7 @@ Now that we're done creating the preprocessing pipeline let's add the model to t
 from sklearn.linear_model import LinearRegression
 
 complete_pipeline = Pipeline([
-    ("preprocesser", preprocessing_pipeline),
+    ("preprocessor", preprocessing_pipeline),
     ("estimator", LinearRegression())
 ])
 
@@ -272,7 +272,7 @@ preprocessing_pipeline = ColumnTransformer([
 from sklearn.linear_model import LinearRegression
 
 complete_pipeline = Pipeline([
-    ("preprocesser", preprocessing_pipeline),
+    ("preprocessor", preprocessing_pipeline),
     ("estimator", LinearRegression())
 ])
 
