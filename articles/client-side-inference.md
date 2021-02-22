@@ -25,10 +25,37 @@ Let's see the steps that we need to go through to get what we want.
 - Send the model in a response and save it in the browser.
 - Load the model from the browser and run inference.
 
-See <a class="mdlink" href="https://mahmoudyusof.github.io/general/saving-keras-models/">this article</a> to know how to save your trained models.
+<!-- See <a class="mdlink" href="https://mahmoudyusof.github.io/general/saving-keras-models/">this article</a> to know how to save your trained models. -->
+
+The model I am going to use in here is a generator model, you can find how to create it and save it in [this notebook](githublink)
 
 ### Installing tensorflowjs-converter
 This CLI tool comes by default when you install tensorflowjs via pip.  
 ```shell
 $ pip install tensorflowjs
 ```
+That's it, now you have the converter installed and you can use the CLI to convert your model to the required format for TFJS.
+
+### Converting the saved model
+Before we start with the conversion, you should take a look at the `--help` option in this command.
+```
+$ tensorflowjs_converter --help
+```
+As you can see, there are multiple input formats available, since there are many ways by which you can save a model.  
+In my case I used keras to create the model and saved it in a `SavedModel` format which creates a directory with a `saved_model.pb` file in it.  
+
+Now we want to convert this model.
+```
+$ tensorflow_converter --input_format=tf_saved_model source/model/directory target/save/directory
+```
+
+In this command `source/model/directory` should have a file with the `pb` extension. This will output a `model.json` file and some other binary fiels in the target directory.
+
+### Save the model in the browser
+Now for some JS stuff. First install tensorflowjs in your app. You can use npm or just include the CDN link in your code directly.
+- CDN `<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@2.0.0/dist/tf.min.js"></script>
+`
+- npm installation `$ npm install --save @tensorflow/tfjs`
+- yarn installation `$ yarn add @tensorflow/tfjs`
+
+Now let's import the library
