@@ -108,6 +108,7 @@
     </section>
 
     <section id="articles">
+      <h2>Articles</h2>
       <v-card
         class="primary"
         color="text--text"
@@ -115,7 +116,6 @@
         elevation="0"
       >
         <v-list color="text--text" class="primary" dense>
-          <v-subheader>Articles</v-subheader>
           <v-list-item-group>
             <v-list-item
               v-for="(edge, i) in $page.allArticle.edges"
@@ -445,9 +445,6 @@ export default {
       { property: "og:url", content: "https://mahmoudyusof.github.io" }
     ]
   },
-  created() {
-    // console.log(this.$page)
-  },
   data: () => ({
     success: false,
     fail: false,
@@ -634,11 +631,13 @@ export default {
   border-bottom: 1px solid var(--v-accent-base);
 }
 #about h2,
-#skills > h2 {
+#skills > h2,
+#articles > h2 {
   font-family: "Roboto", sans-serif;
   font-weight: 600;
 }
 #skills > h2,
+#articles > h2,
 #contact > h2 {
   border-bottom: 1px solid var(--v-accent-base);
 }

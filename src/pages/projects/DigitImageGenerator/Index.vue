@@ -34,8 +34,7 @@
 import * as tf from "@tensorflow/tfjs";
 
 export default {
-  mounted() {
-    if (this.model) model.dispose();
+  created() {
     tf.loadGraphModel("localstorage://generator_model")
       .then((model) => {
         this.model = model;
@@ -43,16 +42,16 @@ export default {
         this.generate();
       })
       .catch((e) => {
-        return tf.loadGraphModel("/gen_web/model.json");
-      })
-      .then((model) => {
-        this.model = model;
-        model.save("localstorage://generator_model");
-        this.loading = false;
-        this.generate();
-      })
-      .catch((e) => {
-        this.loading = false;
+        tf.loadGraphModel("/gen_web/model.json")
+          .then((model) => {
+            this.model = model;
+            model.save("localstorage://generator_model");
+            this.loading = false;
+            this.generate();
+          })
+          .catch((e) => {
+            this.loading = false;
+          });
       });
   },
   beforeDestroy() {
@@ -73,16 +72,18 @@ export default {
       const n = 8;
       tf.tidy(() => {
         const z = tf.randomNormal([n, 100]);
-        const labels = tf
-          .randomUniform([n, 1], this.cls, this.cls + 1, "int32")
-          .cast("float32");
+        const labels = tf.broadcastTo(tf.scalar(this.cls), [n, 1]);
+        // const labels = tf.tensor2d([[this.cls]], [n, 1])
+        // const labels = tf
+        //   .randomUniform([n, 1], this.cls, this.cls + 1, "int32")
+        //   .cast("float32");
         let outs = this.model.execute([z, labels]);
         outs = tf.add(outs, tf.scalar(1.0));
         outs = tf.div(outs, tf.scalar(2.0));
         let arr = [];
         for (let i = 0; i < n; i++) {
-          let img = outs.slice(i, 1).squeeze();
-          img = tf.expandDims(img, 2);
+          let img = outs.slice(i, 1);
+          img = tf.reshape(img, [28, 28, 1]);
           img = tf.image.resizeNearestNeighbor(img, [200, 200]);
           arr.push(tf.browser.toPixels(img, this.$refs.imgs[i]));
         }

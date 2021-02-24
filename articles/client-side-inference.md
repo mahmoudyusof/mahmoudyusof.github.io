@@ -1,11 +1,11 @@
 ---
-project: general
+project: cgan
 slug: client-side-inference
-title: "Client Side Inference"
+title: "Client Side Inference with TFJS"
 type: article
 description: How to convert models to JavaScript compatible format, save them on the clients' browsers and load them for inference.
 image: https://mahmoudyusof.github.io/seo_images/client-side-inference.jpg
-url: https://mahmoudyusof.github.io/general/client-side-inference/
+url: https://mahmoudyusof.github.io/cgan/client-side-inference/
 ---
 
 # Client Side Inference with TFJS
@@ -76,17 +76,17 @@ tf.fromGraphModel("localstorage://saved_model_name")
         generate(model);
     }).catch(e => {
         // if you fail, load the model from the server
-        // return the promised output of this function to chain a "then" call
-        return tf.fromGraphModel("http://model-server-url/model_directory");
-    }).then(model => {
-        // In the chained "then call" save the model in localstorage
-        model.save("localstorage://saved_model_name");
-        
-        // run inference
-        generate(model);
-    }).catch(e => {
-        console.log("some unexpected error");
-        console.log(e);
+        tf.fromGraphModel("http://model-server-url/model_directory")
+            .then(model => {
+            // In the chained "then call" save the model in localstorage
+            model.save("localstorage://saved_model_name");
+            
+            // run inference
+            generate(model);
+        }).catch(e => {
+            console.log("some unexpected error");
+            console.log(e);
+        });
     });
 ```
 
@@ -109,6 +109,8 @@ function generate(model){
 
         // generate new image
         model.execute([random_vector, label]).then(image => {
+            // let's dispose of the model since we don't need it in memory any more
+            model.dispose();
             // images are of shape [batch_size, 28, 28]
             // batch_size here is 1 so we can remove it by squeezing the tensor
             image = image.squeeze();
@@ -137,34 +139,21 @@ function generate(model){
              * Horrai!! you did it,
              * you just created a function that runs a GAN on the browser!
             */
+        }).catch(e => {
+            model.dispose();
         });
     });
 }
 
-
-// load the model from localstorage
-tf.fromGraphModel("localstorage://saved_model_name")
-    .then(model => {
-        // success case, run the generate function.
-        generate(model);
-    }).catch(e => {
-        // if you fail, load the model from the server
-        // return the promised output of this function to chain a "then" call
-        return tf.fromGraphModel("http://model-server-url/model_directory");
-    }).then(model => {
-        // In the chained "then call" save the model in localstorage
-        model.save("localstorage://saved_model_name");
-        
-        // run inference
-        generate(model);
-    }).catch(e => {
-        console.log("some unexpected error");
-        console.log(e);
-    });
 ```
+> To know more check out [TFJS documentation](https://js.tensorflow.org/api/latest/)
+
+## Demo
+If you want to test the final product see [this demo](https://mahmoudyusof.github.io/projects/digit-image-generator).  
 
 # That is it, CONGRATULATIONS.
 Now you can use client side inference. I should tell you that this is not recommended for resource demanding models, since they might crash the frontend because they require a lot of memory, so extract light weight models only to the client side.  
+
 If you have any comments, questions or recommendations please reach out to me at any time, I hope this was helpful.
 
 
@@ -218,4 +207,24 @@ function generate(model){
         });
     });
 }
+
+// load the model from localstorage
+tf.fromGraphModel("localstorage://saved_model_name")
+    .then(model => {
+        // success case, run the generate function.
+        generate(model);
+    }).catch(e => {
+        // if you fail, load the model from the server
+        tf.fromGraphModel("http://model-server-url/model_directory")
+            .then(model => {
+            // In the chained "then call" save the model in localstorage
+            model.save("localstorage://saved_model_name");
+            
+            // run inference
+            generate(model);
+        }).catch(e => {
+            console.log("some unexpected error");
+            console.log(e);
+        });
+    });
 ```
