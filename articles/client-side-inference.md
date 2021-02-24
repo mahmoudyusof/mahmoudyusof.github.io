@@ -58,4 +58,164 @@ Now for some JS stuff. First install tensorflowjs in your app. You can use npm o
 - npm installation `$ npm install --save @tensorflow/tfjs`
 - yarn installation `$ yarn add @tensorflow/tfjs`
 
-Now let's import the library
+Now let's create a funciton that responds to, for example, a click event. This function will do the following:
+- Try to load the model from localStorage
+    - If it fails it will load the model from the server
+    - Then save the model in localStorage
+- Run inference with the model
+- Update UI to display results
+
+> In the following code we will be using a GAN model to generate hand written digits. If you don't know how GANs work, basically we need a random vector and we'll pass it to the model and the model will return a 28 by 28 image. In this particular GAN we also give it a label specifying which digit we want to generate.
+
+
+```js
+// load the model from localstorage
+tf.fromGraphModel("localstorage://saved_model_name")
+    .then(model => {
+        // success case, run the generate function.
+        generate(model);
+    }).catch(e => {
+        // if you fail, load the model from the server
+        // return the promised output of this function to chain a "then" call
+        return tf.fromGraphModel("http://model-server-url/model_directory");
+    }).then(model => {
+        // In the chained "then call" save the model in localstorage
+        model.save("localstorage://saved_model_name");
+        
+        // run inference
+        generate(model);
+    }).catch(e => {
+        console.log("some unexpected error");
+        console.log(e);
+    });
+```
+
+Now let's take a look at the generate method and see what it does. This is where most of the tfjs stuff takes place.
+
+```js
+// import the library under the tf namespace
+import * as tf from "@tensorflow/tfjs";
+
+function generate(model){
+    // tf.tidy handles garbage collection to prevent any memory leakage
+    tf.tidy(() => {
+        // vector of shape [batch_size, encoding_dim]
+        const random_vector = tf.randomNormal([1, 100]);
+
+        // the label tensor, shape is [batch_size, 1]
+        // I am passing the data type as int32 because I want the funciton to return an int,
+        // however the model accepts float numbers not ints this is why I am casting the tensor.
+        const label = tf.randomUniform([1, 1], 0, 10, "int32").cast("float32");
+
+        // generate new image
+        model.execute([random_vector, label]).then(image => {
+            // images are of shape [batch_size, 28, 28]
+            // batch_size here is 1 so we can remove it by squeezing the tensor
+            image = image.squeeze();
+
+            // the output of the model ranges from -1 to 1, let's make it from 0 to 1 since the next funciton is picky
+            image = tf.div(tf.add(image, tf.scalar(1)), tf.scalar(2))
+
+            // let's now make the image of rank 3 to make it an appropriate image of shape [28, 28, 1] which means a gray scale image
+            // The second argument of this function is the axis of expansion
+            image = tf.expandDims(image, 2);
+
+            // Let's now resize the image from [28, 28, 1] to [200, 200, 1].
+            image = tf.image.resizeNearestNeighbor(img, [200, 200]);
+
+            // Now let's get the canvas element, that we should create in markup, and write this image to it.
+            const canvas = document.getElementById("myCanvas");
+            
+            tf.browser.toPixels(image, canvas)
+            .then(output => {
+                console.log("Success");
+            }).catch(e => {
+                console.log(e);
+            })
+
+            /**
+             * Horrai!! you did it,
+             * you just created a function that runs a GAN on the browser!
+            */
+        });
+    });
+}
+
+
+// load the model from localstorage
+tf.fromGraphModel("localstorage://saved_model_name")
+    .then(model => {
+        // success case, run the generate function.
+        generate(model);
+    }).catch(e => {
+        // if you fail, load the model from the server
+        // return the promised output of this function to chain a "then" call
+        return tf.fromGraphModel("http://model-server-url/model_directory");
+    }).then(model => {
+        // In the chained "then call" save the model in localstorage
+        model.save("localstorage://saved_model_name");
+        
+        // run inference
+        generate(model);
+    }).catch(e => {
+        console.log("some unexpected error");
+        console.log(e);
+    });
+```
+
+# That is it, CONGRATULATIONS.
+Now you can use client side inference. I should tell you that this is not recommended for resource demanding models, since they might crash the frontend because they require a lot of memory, so extract light weight models only to the client side.  
+If you have any comments, questions or recommendations please reach out to me at any time, I hope this was helpful.
+
+
+# Full Code
+
+```js
+// import the library under the tf namespace
+import * as tf from "@tensorflow/tfjs";
+
+function generate(model){
+    // tf.tidy handles garbage collection to prevent any memory leakage
+    tf.tidy(() => {
+        // vector of shape [batch_size, encoding_dim]
+        const random_vector = tf.randomNormal([1, 100]);
+
+        // the label tensor, shape is [batch_size, 1]
+        // I am passing the data type as int32 because I want the funciton to return an int,
+        // however the model accepts float numbers not ints this is why I am casting the tensor.
+        const label = tf.randomUniform([1, 1], 0, 10, "int32").cast("float32");
+
+        // generate new image
+        model.execute([random_vector, label]).then(image => {
+            // images are of shape [batch_size, 28, 28]
+            // batch_size here is 1 so we can remove it by squeezing the tensor
+            image = image.squeeze();
+
+            // the output of the model ranges from -1 to 1, let's make it from 0 to 1 since the next funciton is picky
+            image = tf.div(tf.add(image, tf.scalar(1)), tf.scalar(2))
+
+            // let's now make the image of rank 3 to make it an appropriate image of shape [28, 28, 1] which means a gray scale image
+            // The second argument of this function is the axis of expansion
+            image = tf.expandDims(image, 2);
+
+            // Let's now resize the image from [28, 28, 1] to [200, 200, 1].
+            image = tf.image.resizeNearestNeighbor(img, [200, 200]);
+
+            // Now let's get the canvas element, that we should create in markup, and write this image to it.
+            const canvas = document.getElementById("myCanvas");
+            
+            tf.browser.toPixels(image, canvas)
+            .then(output => {
+                console.log("Success");
+            }).catch(e => {
+                console.log(e);
+            })
+
+            /**
+             * Horrai!! you did it,
+             * you just created a function that runs a GAN on the browser!
+            */
+        });
+    });
+}
+```
