@@ -4,7 +4,7 @@ slug: client-side-inference
 title: "Client Side Inference with TFJS"
 type: article
 description: How to convert models to JavaScript compatible format, save them on the clients' browsers and load them for inference.
-image: https://mahmoudyusof.github.io/seo_images/client-side-inference.jpg
+image: https://mahmoudyusof.github.io/seo_images/client-side-inference-meme.jpg
 url: https://mahmoudyusof.github.io/cgan/client-side-inference/
 ---
 
