@@ -27,7 +27,7 @@ Let's see the steps that we need to go through to get what we want.
 
 <!-- See <a class="mdlink" href="https://mahmoudyusof.github.io/general/saving-keras-models/">this article</a> to know how to save your trained models. -->
 
-The model I am going to use in here is a generator model, you can find how to create it and save it in [this notebook](githublink)
+The model I am going to use in here is a generator model, you can find how to create it and save it in [this notebook](https://github.com/mahmoudyusof/hands-on-ml/blob/master/17_Generative_Models/DCGANs.ipynb)
 
 ### Installing tensorflowjs-converter
 This CLI tool comes by default when you install tensorflowjs via pip.  
@@ -149,7 +149,7 @@ function generate(model){
 > To know more check out [TFJS documentation](https://js.tensorflow.org/api/latest/)
 
 ## Demo
-If you want to test the final product see [this demo](https://mahmoudyusof.github.io/projects/digit-image-generator).  
+If you want to test the final product see [this demo](https://mahmoudyusof.github.io/projects/digit-image-generator).
 
 # That is it, CONGRATULATIONS.
 Now you can use client side inference. I should tell you that this is not recommended for resource demanding models, since they might crash the frontend because they require a lot of memory, so extract light weight models only to the client side.  
