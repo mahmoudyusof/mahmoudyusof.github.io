@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Mahmoud Youssef portfolio</title><meta name="gridsome:hash" content="5b5f75d25e19532c39ff18cd701a577df7c533a1"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&amp;display=swap"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&amp;display=swap"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"><link rel="preload" href="/assets/css/0.styles.c4bea370.css" as="style"><link rel="preload" href="/assets/js/app.640e4b72.js" as="script"><link rel="preload" href="/assets/js/page--src--pages--projects--sorting-visualizer--index-vue.b8c458fa.js" as="script"><link rel="prefetch" href="/assets/js/page--src--pages--404-vue.ef18b5d0.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.8ae0bfae.js"><link rel="prefetch" href="/assets/js/page--src--pages--projects--digit-image-generator--index-vue.f2ad3337.js"><link rel="prefetch" href="/assets/js/page--src--templates--article-vue.e8a69820.js"><link rel="prefetch" href="/assets/js/vendors~page--src--pages--projects--digit-image-generator--index-vue.604604e6.js"><link rel="stylesheet" href="/assets/css/0.styles.c4bea370.css"><style data-vue-tag="vuetify" type="text/css" id="vuetify-theme-stylesheet" nonce="undefined">:root {
+  --v-anchor-base: #263238;
+  --v-primary-base: #263238;
+  --v-primary-lighten5: #9fadb5;
+  --v-primary-lighten4: #85939a;
+  --v-primary-lighten3: #6c7980;
+  --v-primary-lighten2: #536067;
+  --v-primary-lighten1: #3c484f;
+  --v-primary-darken1: #111d23;
+  --v-primary-darken2: #00030d;
+  --v-primary-darken3: #000000;
+  --v-primary-darken4: #000000;
+  --v-secondary-base: #37474f;
+  --v-secondary-lighten5: #b5c7d0;
+  --v-secondary-lighten4: #9aacb5;
+  --v-secondary-lighten3: #80919a;
+  --v-secondary-lighten2: #677780;
+  --v-secondary-lighten1: #4e5f67;
+  --v-secondary-darken1: #213138;
+  --v-secondary-darken2: #0c1c23;
+  --v-secondary-darken3: #00010d;
+  --v-secondary-darken4: #000000;
+  --v-accent-base: #57676f;
+  --v-accent-lighten5: #dbedf6;
+  --v-accent-lighten4: #bfd0d9;
+  --v-accent-lighten3: #a4b5be;
+  --v-accent-lighten2: #899aa3;
+  --v-accent-lighten1: #708088;
+  --v-accent-darken1: #3f4f57;
+  --v-accent-darken2: #29383f;
+  --v-accent-darken3: #142329;
+  --v-accent-darken4: #000d15;
+  --v-error-base: #ff5252;
+  --v-error-lighten5: #ffe4d5;
+  --v-error-lighten4: #ffc6b9;
+  --v-error-lighten3: #ffa99e;
+  --v-error-lighten2: #ff8c84;
+  --v-error-lighten1: #ff6f6a;
+  --v-error-darken1: #df323b;
+  --v-error-darken2: #bf0025;
+  --v-error-darken3: #9f0010;
+  --v-error-darken4: #800000;
+  --v-info-base: #2196f3;
+  --v-info-lighten5: #d4ffff;
+  --v-info-lighten4: #b5ffff;
+  --v-info-lighten3: #95e8ff;
+  --v-info-lighten2: #75ccff;
+  --v-info-lighten1: #51b0ff;
+  --v-info-darken1: #007cd6;
+  --v-info-darken2: #0064ba;
+  --v-info-darken3: #004d9f;
+  --v-info-darken4: #003784;
+  --v-success-base: #4caf50;
+  --v-success-lighten5: #dcffd6;
+  --v-success-lighten4: #beffba;
+  --v-success-lighten3: #a2ff9e;
+  --v-success-lighten2: #85e783;
+  --v-success-lighten1: #69cb69;
+  --v-success-darken1: #2d9437;
+  --v-success-darken2: #00791e;
+  --v-success-darken3: #006000;
+  --v-success-darken4: #004700;
+  --v-warning-base: #fb8c00;
+  --v-warning-lighten5: #ffff9e;
+  --v-warning-lighten4: #fffb82;
+  --v-warning-lighten3: #ffdf67;
+  --v-warning-lighten2: #ffc24b;
+  --v-warning-lighten1: #ffa72d;
+  --v-warning-darken1: #db7200;
+  --v-warning-darken2: #bb5900;
+  --v-warning-darken3: #9d4000;
+  --v-warning-darken4: #802700;
+  --v-text-base: #ffffff;
+  --v-text-lighten5: #ffffff;
+  --v-text-lighten4: #ffffff;
+  --v-text-lighten3: #ffffff;
+  --v-text-lighten2: #ffffff;
+  --v-text-lighten1: #ffffff;
+  --v-text-darken1: #e2e2e2;
+  --v-text-darken2: #c6c6c6;
+  --v-text-darken3: #ababab;
+  --v-text-darken4: #919191;
+  --v-background-base: #263238;
+  --v-background-lighten5: #9fadb5;
+  --v-background-lighten4: #85939a;
+  --v-background-lighten3: #6c7980;
+  --v-background-lighten2: #536067;
+  --v-background-lighten1: #3c484f;
+  --v-background-darken1: #111d23;
+  --v-background-darken2: #00030d;
+  --v-background-darken3: #000000;
+  --v-background-darken4: #000000;
+}
+
+.v-application a { color: var(--v-anchor-base); }
+.v-application .primary {
+  background-color: var(--v-primary-base) !important;
+  border-color: var(--v-primary-base) !important;
+}
+.v-application .primary--text {
+  color: var(--v-primary-base) !important;
+  caret-color: var(--v-primary-base) !important;
+}
+.v-application .primary.lighten-5 {
+  background-color: var(--v-primary-lighten5) !important;
+  border-color: var(--v-primary-lighten5) !important;
+}
+.v-application .primary--text.text--lighten-5 {
+  color: var(--v-primary-lighten5) !important;
+  caret-color: var(--v-primary-lighten5) !important;
+}
+.v-application .primary.lighten-4 {
+  background-color: var(--v-primary-lighten4) !important;
+  border-color: var(--v-primary-lighten4) !important;
+}
+.v-application .primary--text.text--lighten-4 {
+  color: var(--v-primary-lighten4) !important;
+  caret-color: var(--v-primary-lighten4) !important;
+}
+.v-application .primary.lighten-3 {
+  background-color: var(--v-primary-lighten3) !important;
+  border-color: var(--v-primary-lighten3) !important;
+}
+.v-application .primary--text.text--lighten-3 {
+  color: var(--v-primary-lighten3) !important;
+  caret-color: var(--v-primary-lighten3) !important;
+}
+.v-application .primary.lighten-2 {
+  background-color: var(--v-primary-lighten2) !important;
+  border-color: var(--v-primary-lighten2) !important;
+}
+.v-application .primary--text.text--lighten-2 {
+  color: var(--v-primary-lighten2) !important;
+  caret-color: var(--v-primary-lighten2) !important;
+}
+.v-application .primary.lighten-1 {
+  background-color: var(--v-primary-lighten1) !important;
+  border-color: var(--v-primary-lighten1) !important;
+}
+.v-application .primary--text.text--lighten-1 {
+  color: var(--v-primary-lighten1) !important;
+  caret-color: var(--v-primary-lighten1) !important;
+}
+.v-application .primary.darken-1 {
+  background-color: var(--v-primary-darken1) !important;
+  border-color: var(--v-primary-darken1) !important;
+}
+.v-application .primary--text.text--darken-1 {
+  color: var(--v-primary-darken1) !important;
+  caret-color: var(--v-primary-darken1) !important;
+}
+.v-application .primary.darken-2 {
+  background-color: var(--v-primary-darken2) !important;
+  border-color: var(--v-primary-darken2) !important;
+}
+.v-application .primary--text.text--darken-2 {
+  color: var(--v-primary-darken2) !important;
+  caret-color: var(--v-primary-darken2) !important;
+}
+.v-application .primary.darken-3 {
+  background-color: var(--v-primary-darken3) !important;
+  border-color: var(--v-primary-darken3) !important;
+}
+.v-application .primary--text.text--darken-3 {
+  color: var(--v-primary-darken3) !important;
+  caret-color: var(--v-primary-darken3) !important;
+}
+.v-application .primary.darken-4 {
+  background-color: var(--v-primary-darken4) !important;
+  border-color: var(--v-primary-darken4) !important;
+}
+.v-application .primary--text.text--darken-4 {
+  color: var(--v-primary-darken4) !important;
+  caret-color: var(--v-primary-darken4) !important;
+}
+.v-application .secondary {
+  background-color: var(--v-secondary-base) !important;
+  border-color: var(--v-secondary-base) !important;
+}
+.v-application .secondary--text {
+  color: var(--v-secondary-base) !important;
+  caret-color: var(--v-secondary-base) !important;
+}
+.v-application .secondary.lighten-5 {
+  background-color: var(--v-secondary-lighten5) !important;
+  border-color: var(--v-secondary-lighten5) !important;
+}
+.v-application .secondary--text.text--lighten-5 {
+  color: var(--v-secondary-lighten5) !important;
+  caret-color: var(--v-secondary-lighten5) !important;
+}
+.v-application .secondary.lighten-4 {
+  background-color: var(--v-secondary-lighten4) !important;
+  border-color: var(--v-secondary-lighten4) !important;
+}
+.v-application .secondary--text.text--lighten-4 {
+  color: var(--v-secondary-lighten4) !important;
+  caret-color: var(--v-secondary-lighten4) !important;
+}
+.v-application .secondary.lighten-3 {
+  background-color: var(--v-secondary-lighten3) !important;
+  border-color: var(--v-secondary-lighten3) !important;
+}
+.v-application .secondary--text.text--lighten-3 {
+  color: var(--v-secondary-lighten3) !important;
+  caret-color: var(--v-secondary-lighten3) !important;
+}
+.v-application .secondary.lighten-2 {
+  background-color: var(--v-secondary-lighten2) !important;
+  border-color: var(--v-secondary-lighten2) !important;
+}
+.v-application .secondary--text.text--lighten-2 {
+  color: var(--v-secondary-lighten2) !important;
+  caret-color: var(--v-secondary-lighten2) !important;
+}
+.v-application .secondary.lighten-1 {
+  background-color: var(--v-secondary-lighten1) !important;
+  border-color: var(--v-secondary-lighten1) !important;
+}
+.v-application .secondary--text.text--lighten-1 {
+  color: var(--v-secondary-lighten1) !important;
+  caret-color: var(--v-secondary-lighten1) !important;
+}
+.v-application .secondary.darken-1 {
+  background-color: var(--v-secondary-darken1) !important;
+  border-color: var(--v-secondary-darken1) !important;
+}
+.v-application .secondary--text.text--darken-1 {
+  color: var(--v-secondary-darken1) !important;
+  caret-color: var(--v-secondary-darken1) !important;
+}
+.v-application .secondary.darken-2 {
+  background-color: var(--v-secondary-darken2) !important;
+  border-color: var(--v-secondary-darken2) !important;
+}
+.v-application .secondary--text.text--darken-2 {
+  color: var(--v-secondary-darken2) !important;
+  caret-color: var(--v-secondary-darken2) !important;
+}
+.v-application .secondary.darken-3 {
+  background-color: var(--v-secondary-darken3) !important;
+  border-color: var(--v-secondary-darken3) !important;
+}
+.v-application .secondary--text.text--darken-3 {
+  color: var(--v-secondary-darken3) !important;
+  caret-color: var(--v-secondary-darken3) !important;
+}
+.v-application .secondary.darken-4 {
+  background-color: var(--v-secondary-darken4) !important;
+  border-color: var(--v-secondary-darken4) !important;
+}
+.v-application .secondary--text.text--darken-4 {
+  color: var(--v-secondary-darken4) !important;
+  caret-color: var(--v-secondary-darken4) !important;
+}
+.v-application .accent {
+  background-color: var(--v-accent-base) !important;
+  border-color: var(--v-accent-base) !important;
+}
+.v-application .accent--text {
+  color: var(--v-accent-base) !important;
+  caret-color: var(--v-accent-base) !important;
+}
+.v-application .accent.lighten-5 {
+  background-color: var(--v-accent-lighten5) !important;
+  border-color: var(--v-accent-lighten5) !important;
+}
+.v-application .accent--text.text--lighten-5 {
+  color: var(--v-accent-lighten5) !important;
+  caret-color: var(--v-accent-lighten5) !important;
+}
+.v-application .accent.lighten-4 {
+  background-color: var(--v-accent-lighten4) !important;
+  border-color: var(--v-accent-lighten4) !important;
+}
+.v-application .accent--text.text--lighten-4 {
+  color: var(--v-accent-lighten4) !important;
+  caret-color: var(--v-accent-lighten4) !important;
+}
+.v-application .accent.lighten-3 {
+  background-color: var(--v-accent-lighten3) !important;
+  border-color: var(--v-accent-lighten3) !important;
+}
+.v-application .accent--text.text--lighten-3 {
+  color: var(--v-accent-lighten3) !important;
+  caret-color: var(--v-accent-lighten3) !important;
+}
+.v-application .accent.lighten-2 {
+  background-color: var(--v-accent-lighten2) !important;
+  border-color: var(--v-accent-lighten2) !important;
+}
+.v-application .accent--text.text--lighten-2 {
+  color: var(--v-accent-lighten2) !important;
+  caret-color: var(--v-accent-lighten2) !important;
+}
+.v-application .accent.lighten-1 {
+  background-color: var(--v-accent-lighten1) !important;
+  border-color: var(--v-accent-lighten1) !important;
+}
+.v-application .accent--text.text--lighten-1 {
+  color: var(--v-accent-lighten1) !important;
+  caret-color: var(--v-accent-lighten1) !important;
+}
+.v-application .accent.darken-1 {
+  background-color: var(--v-accent-darken1) !important;
+  border-color: var(--v-accent-darken1) !important;
+}
+.v-application .accent--text.text--darken-1 {
+  color: var(--v-accent-darken1) !important;
+  caret-color: var(--v-accent-darken1) !important;
+}
+.v-application .accent.darken-2 {
+  background-color: var(--v-accent-darken2) !important;
+  border-color: var(--v-accent-darken2) !important;
+}
+.v-application .accent--text.text--darken-2 {
+  color: var(--v-accent-darken2) !important;
+  caret-color: var(--v-accent-darken2) !important;
+}
+.v-application .accent.darken-3 {
+  background-color: var(--v-accent-darken3) !important;
+  border-color: var(--v-accent-darken3) !important;
+}
+.v-application .accent--text.text--darken-3 {
+  color: var(--v-accent-darken3) !important;
+  caret-color: var(--v-accent-darken3) !important;
+}
+.v-application .accent.darken-4 {
+  background-color: var(--v-accent-darken4) !important;
+  border-color: var(--v-accent-darken4) !important;
+}
+.v-application .accent--text.text--darken-4 {
+  color: var(--v-accent-darken4) !important;
+  caret-color: var(--v-accent-darken4) !important;
+}
+.v-application .error {
+  background-color: var(--v-error-base) !important;
+  border-color: var(--v-error-base) !important;
+}
+.v-application .error--text {
+  color: var(--v-error-base) !important;
+  caret-color: var(--v-error-base) !important;
+}
+.v-application .error.lighten-5 {
+  background-color: var(--v-error-lighten5) !important;
+  border-color: var(--v-error-lighten5) !important;
+}
+.v-application .error--text.text--lighten-5 {
+  color: var(--v-error-lighten5) !important;
+  caret-color: var(--v-error-lighten5) !important;
+}
+.v-application .error.lighten-4 {
+  background-color: var(--v-error-lighten4) !important;
+  border-color: var(--v-error-lighten4) !important;
+}
+.v-application .error--text.text--lighten-4 {
+  color: var(--v-error-lighten4) !important;
+  caret-color: var(--v-error-lighten4) !important;
+}
+.v-application .error.lighten-3 {
+  background-color: var(--v-error-lighten3) !important;
+  border-color: var(--v-error-lighten3) !important;
+}
+.v-application .error--text.text--lighten-3 {
+  color: var(--v-error-lighten3) !important;
+  caret-color: var(--v-error-lighten3) !important;
+}
+.v-application .error.lighten-2 {
+  background-color: var(--v-error-lighten2) !important;
+  border-color: var(--v-error-lighten2) !important;
+}
+.v-application .error--text.text--lighten-2 {
+  color: var(--v-error-lighten2) !important;
+  caret-color: var(--v-error-lighten2) !important;
+}
+.v-application .error.lighten-1 {
+  background-color: var(--v-error-lighten1) !important;
+  border-color: var(--v-error-lighten1) !important;
+}
+.v-application .error--text.text--lighten-1 {
+  color: var(--v-error-lighten1) !important;
+  caret-color: var(--v-error-lighten1) !important;
+}
+.v-application .error.darken-1 {
+  background-color: var(--v-error-darken1) !important;
+  border-color: var(--v-error-darken1) !important;
+}
+.v-application .error--text.text--darken-1 {
+  color: var(--v-error-darken1) !important;
+  caret-color: var(--v-error-darken1) !important;
+}
+.v-application .error.darken-2 {
+  background-color: var(--v-error-darken2) !important;
+  border-color: var(--v-error-darken2) !important;
+}
+.v-application .error--text.text--darken-2 {
+  color: var(--v-error-darken2) !important;
+  caret-color: var(--v-error-darken2) !important;
+}
+.v-application .error.darken-3 {
+  background-color: var(--v-error-darken3) !important;
+  border-color: var(--v-error-darken3) !important;
+}
+.v-application .error--text.text--darken-3 {
+  color: var(--v-error-darken3) !important;
+  caret-color: var(--v-error-darken3) !important;
+}
+.v-application .error.darken-4 {
+  background-color: var(--v-error-darken4) !important;
+  border-color: var(--v-error-darken4) !important;
+}
+.v-application .error--text.text--darken-4 {
+  color: var(--v-error-darken4) !important;
+  caret-color: var(--v-error-darken4) !important;
+}
+.v-application .info {
+  background-color: var(--v-info-base) !important;
+  border-color: var(--v-info-base) !important;
+}
+.v-application .info--text {
+  color: var(--v-info-base) !important;
+  caret-color: var(--v-info-base) !important;
+}
+.v-application .info.lighten-5 {
+  background-color: var(--v-info-lighten5) !important;
+  border-color: var(--v-info-lighten5) !important;
+}
+.v-application .info--text.text--lighten-5 {
+  color: var(--v-info-lighten5) !important;
+  caret-color: var(--v-info-lighten5) !important;
+}
+.v-application .info.lighten-4 {
+  background-color: var(--v-info-lighten4) !important;
+  border-color: var(--v-info-lighten4) !important;
+}
+.v-application .info--text.text--lighten-4 {
+  color: var(--v-info-lighten4) !important;
+  caret-color: var(--v-info-lighten4) !important;
+}
+.v-application .info.lighten-3 {
+  background-color: var(--v-info-lighten3) !important;
+  border-color: var(--v-info-lighten3) !important;
+}
+.v-application .info--text.text--lighten-3 {
+  color: var(--v-info-lighten3) !important;
+  caret-color: var(--v-info-lighten3) !important;
+}
+.v-application .info.lighten-2 {
+  background-color: var(--v-info-lighten2) !important;
+  border-color: var(--v-info-lighten2) !important;
+}
+.v-application .info--text.text--lighten-2 {
+  color: var(--v-info-lighten2) !important;
+  caret-color: var(--v-info-lighten2) !important;
+}
+.v-application .info.lighten-1 {
+  background-color: var(--v-info-lighten1) !important;
+  border-color: var(--v-info-lighten1) !important;
+}
+.v-application .info--text.text--lighten-1 {
+  color: var(--v-info-lighten1) !important;
+  caret-color: var(--v-info-lighten1) !important;
+}
+.v-application .info.darken-1 {
+  background-color: var(--v-info-darken1) !important;
+  border-color: var(--v-info-darken1) !important;
+}
+.v-application .info--text.text--darken-1 {
+  color: var(--v-info-darken1) !important;
+  caret-color: var(--v-info-darken1) !important;
+}
+.v-application .info.darken-2 {
+  background-color: var(--v-info-darken2) !important;
+  border-color: var(--v-info-darken2) !important;
+}
+.v-application .info--text.text--darken-2 {
+  color: var(--v-info-darken2) !important;
+  caret-color: var(--v-info-darken2) !important;
+}
+.v-application .info.darken-3 {
+  background-color: var(--v-info-darken3) !important;
+  border-color: var(--v-info-darken3) !important;
+}
+.v-application .info--text.text--darken-3 {
+  color: var(--v-info-darken3) !important;
+  caret-color: var(--v-info-darken3) !important;
+}
+.v-application .info.darken-4 {
+  background-color: var(--v-info-darken4) !important;
+  border-color: var(--v-info-darken4) !important;
+}
+.v-application .info--text.text--darken-4 {
+  color: var(--v-info-darken4) !important;
+  caret-color: var(--v-info-darken4) !important;
+}
+.v-application .success {
+  background-color: var(--v-success-base) !important;
+  border-color: var(--v-success-base) !important;
+}
+.v-application .success--text {
+  color: var(--v-success-base) !important;
+  caret-color: var(--v-success-base) !important;
+}
+.v-application .success.lighten-5 {
+  background-color: var(--v-success-lighten5) !important;
+  border-color: var(--v-success-lighten5) !important;
+}
+.v-application .success--text.text--lighten-5 {
+  color: var(--v-success-lighten5) !important;
+  caret-color: var(--v-success-lighten5) !important;
+}
+.v-application .success.lighten-4 {
+  background-color: var(--v-success-lighten4) !important;
+  border-color: var(--v-success-lighten4) !important;
+}
+.v-application .success--text.text--lighten-4 {
+  color: var(--v-success-lighten4) !important;
+  caret-color: var(--v-success-lighten4) !important;
+}
+.v-application .success.lighten-3 {
+  background-color: var(--v-success-lighten3) !important;
+  border-color: var(--v-success-lighten3) !important;
+}
+.v-application .success--text.text--lighten-3 {
+  color: var(--v-success-lighten3) !important;
+  caret-color: var(--v-success-lighten3) !important;
+}
+.v-application .success.lighten-2 {
+  background-color: var(--v-success-lighten2) !important;
+  border-color: var(--v-success-lighten2) !important;
+}
+.v-application .success--text.text--lighten-2 {
+  color: var(--v-success-lighten2) !important;
+  caret-color: var(--v-success-lighten2) !important;
+}
+.v-application .success.lighten-1 {
+  background-color: var(--v-success-lighten1) !important;
+  border-color: var(--v-success-lighten1) !important;
+}
+.v-application .success--text.text--lighten-1 {
+  color: var(--v-success-lighten1) !important;
+  caret-color: var(--v-success-lighten1) !important;
+}
+.v-application .success.darken-1 {
+  background-color: var(--v-success-darken1) !important;
+  border-color: var(--v-success-darken1) !important;
+}
+.v-application .success--text.text--darken-1 {
+  color: var(--v-success-darken1) !important;
+  caret-color: var(--v-success-darken1) !important;
+}
+.v-application .success.darken-2 {
+  background-color: var(--v-success-darken2) !important;
+  border-color: var(--v-success-darken2) !important;
+}
+.v-application .success--text.text--darken-2 {
+  color: var(--v-success-darken2) !important;
+  caret-color: var(--v-success-darken2) !important;
+}
+.v-application .success.darken-3 {
+  background-color: var(--v-success-darken3) !important;
+  border-color: var(--v-success-darken3) !important;
+}
+.v-application .success--text.text--darken-3 {
+  color: var(--v-success-darken3) !important;
+  caret-color: var(--v-success-darken3) !important;
+}
+.v-application .success.darken-4 {
+  background-color: var(--v-success-darken4) !important;
+  border-color: var(--v-success-darken4) !important;
+}
+.v-application .success--text.text--darken-4 {
+  color: var(--v-success-darken4) !important;
+  caret-color: var(--v-success-darken4) !important;
+}
+.v-application .warning {
+  background-color: var(--v-warning-base) !important;
+  border-color: var(--v-warning-base) !important;
+}
+.v-application .warning--text {
+  color: var(--v-warning-base) !important;
+  caret-color: var(--v-warning-base) !important;
+}
+.v-application .warning.lighten-5 {
+  background-color: var(--v-warning-lighten5) !important;
+  border-color: var(--v-warning-lighten5) !important;
+}
+.v-application .warning--text.text--lighten-5 {
+  color: var(--v-warning-lighten5) !important;
+  caret-color: var(--v-warning-lighten5) !important;
+}
+.v-application .warning.lighten-4 {
+  background-color: var(--v-warning-lighten4) !important;
+  border-color: var(--v-warning-lighten4) !important;
+}
+.v-application .warning--text.text--lighten-4 {
+  color: var(--v-warning-lighten4) !important;
+  caret-color: var(--v-warning-lighten4) !important;
+}
+.v-application .warning.lighten-3 {
+  background-color: var(--v-warning-lighten3) !important;
+  border-color: var(--v-warning-lighten3) !important;
+}
+.v-application .warning--text.text--lighten-3 {
+  color: var(--v-warning-lighten3) !important;
+  caret-color: var(--v-warning-lighten3) !important;
+}
+.v-application .warning.lighten-2 {
+  background-color: var(--v-warning-lighten2) !important;
+  border-color: var(--v-warning-lighten2) !important;
+}
+.v-application .warning--text.text--lighten-2 {
+  color: var(--v-warning-lighten2) !important;
+  caret-color: var(--v-warning-lighten2) !important;
+}
+.v-application .warning.lighten-1 {
+  background-color: var(--v-warning-lighten1) !important;
+  border-color: var(--v-warning-lighten1) !important;
+}
+.v-application .warning--text.text--lighten-1 {
+  color: var(--v-warning-lighten1) !important;
+  caret-color: var(--v-warning-lighten1) !important;
+}
+.v-application .warning.darken-1 {
+  background-color: var(--v-warning-darken1) !important;
+  border-color: var(--v-warning-darken1) !important;
+}
+.v-application .warning--text.text--darken-1 {
+  color: var(--v-warning-darken1) !important;
+  caret-color: var(--v-warning-darken1) !important;
+}
+.v-application .warning.darken-2 {
+  background-color: var(--v-warning-darken2) !important;
+  border-color: var(--v-warning-darken2) !important;
+}
+.v-application .warning--text.text--darken-2 {
+  color: var(--v-warning-darken2) !important;
+  caret-color: var(--v-warning-darken2) !important;
+}
+.v-application .warning.darken-3 {
+  background-color: var(--v-warning-darken3) !important;
+  border-color: var(--v-warning-darken3) !important;
+}
+.v-application .warning--text.text--darken-3 {
+  color: var(--v-warning-darken3) !important;
+  caret-color: var(--v-warning-darken3) !important;
+}
+.v-application .warning.darken-4 {
+  background-color: var(--v-warning-darken4) !important;
+  border-color: var(--v-warning-darken4) !important;
+}
+.v-application .warning--text.text--darken-4 {
+  color: var(--v-warning-darken4) !important;
+  caret-color: var(--v-warning-darken4) !important;
+}
+.v-application .text {
+  background-color: var(--v-text-base) !important;
+  border-color: var(--v-text-base) !important;
+}
+.v-application .text--text {
+  color: var(--v-text-base) !important;
+  caret-color: var(--v-text-base) !important;
+}
+.v-application .text.lighten-5 {
+  background-color: var(--v-text-lighten5) !important;
+  border-color: var(--v-text-lighten5) !important;
+}
+.v-application .text--text.text--lighten-5 {
+  color: var(--v-text-lighten5) !important;
+  caret-color: var(--v-text-lighten5) !important;
+}
+.v-application .text.lighten-4 {
+  background-color: var(--v-text-lighten4) !important;
+  border-color: var(--v-text-lighten4) !important;
+}
+.v-application .text--text.text--lighten-4 {
+  color: var(--v-text-lighten4) !important;
+  caret-color: var(--v-text-lighten4) !important;
+}
+.v-application .text.lighten-3 {
+  background-color: var(--v-text-lighten3) !important;
+  border-color: var(--v-text-lighten3) !important;
+}
+.v-application .text--text.text--lighten-3 {
+  color: var(--v-text-lighten3) !important;
+  caret-color: var(--v-text-lighten3) !important;
+}
+.v-application .text.lighten-2 {
+  background-color: var(--v-text-lighten2) !important;
+  border-color: var(--v-text-lighten2) !important;
+}
+.v-application .text--text.text--lighten-2 {
+  color: var(--v-text-lighten2) !important;
+  caret-color: var(--v-text-lighten2) !important;
+}
+.v-application .text.lighten-1 {
+  background-color: var(--v-text-lighten1) !important;
+  border-color: var(--v-text-lighten1) !important;
+}
+.v-application .text--text.text--lighten-1 {
+  color: var(--v-text-lighten1) !important;
+  caret-color: var(--v-text-lighten1) !important;
+}
+.v-application .text.darken-1 {
+  background-color: var(--v-text-darken1) !important;
+  border-color: var(--v-text-darken1) !important;
+}
+.v-application .text--text.text--darken-1 {
+  color: var(--v-text-darken1) !important;
+  caret-color: var(--v-text-darken1) !important;
+}
+.v-application .text.darken-2 {
+  background-color: var(--v-text-darken2) !important;
+  border-color: var(--v-text-darken2) !important;
+}
+.v-application .text--text.text--darken-2 {
+  color: var(--v-text-darken2) !important;
+  caret-color: var(--v-text-darken2) !important;
+}
+.v-application .text.darken-3 {
+  background-color: var(--v-text-darken3) !important;
+  border-color: var(--v-text-darken3) !important;
+}
+.v-application .text--text.text--darken-3 {
+  color: var(--v-text-darken3) !important;
+  caret-color: var(--v-text-darken3) !important;
+}
+.v-application .text.darken-4 {
+  background-color: var(--v-text-darken4) !important;
+  border-color: var(--v-text-darken4) !important;
+}
+.v-application .text--text.text--darken-4 {
+  color: var(--v-text-darken4) !important;
+  caret-color: var(--v-text-darken4) !important;
+}
+.v-application .background {
+  background-color: var(--v-background-base) !important;
+  border-color: var(--v-background-base) !important;
+}
+.v-application .background--text {
+  color: var(--v-background-base) !important;
+  caret-color: var(--v-background-base) !important;
+}
+.v-application .background.lighten-5 {
+  background-color: var(--v-background-lighten5) !important;
+  border-color: var(--v-background-lighten5) !important;
+}
+.v-application .background--text.text--lighten-5 {
+  color: var(--v-background-lighten5) !important;
+  caret-color: var(--v-background-lighten5) !important;
+}
+.v-application .background.lighten-4 {
+  background-color: var(--v-background-lighten4) !important;
+  border-color: var(--v-background-lighten4) !important;
+}
+.v-application .background--text.text--lighten-4 {
+  color: var(--v-background-lighten4) !important;
+  caret-color: var(--v-background-lighten4) !important;
+}
+.v-application .background.lighten-3 {
+  background-color: var(--v-background-lighten3) !important;
+  border-color: var(--v-background-lighten3) !important;
+}
+.v-application .background--text.text--lighten-3 {
+  color: var(--v-background-lighten3) !important;
+  caret-color: var(--v-background-lighten3) !important;
+}
+.v-application .background.lighten-2 {
+  background-color: var(--v-background-lighten2) !important;
+  border-color: var(--v-background-lighten2) !important;
+}
+.v-application .background--text.text--lighten-2 {
+  color: var(--v-background-lighten2) !important;
+  caret-color: var(--v-background-lighten2) !important;
+}
+.v-application .background.lighten-1 {
+  background-color: var(--v-background-lighten1) !important;
+  border-color: var(--v-background-lighten1) !important;
+}
+.v-application .background--text.text--lighten-1 {
+  color: var(--v-background-lighten1) !important;
+  caret-color: var(--v-background-lighten1) !important;
+}
+.v-application .background.darken-1 {
+  background-color: var(--v-background-darken1) !important;
+  border-color: var(--v-background-darken1) !important;
+}
+.v-application .background--text.text--darken-1 {
+  color: var(--v-background-darken1) !important;
+  caret-color: var(--v-background-darken1) !important;
+}
+.v-application .background.darken-2 {
+  background-color: var(--v-background-darken2) !important;
+  border-color: var(--v-background-darken2) !important;
+}
+.v-application .background--text.text--darken-2 {
+  color: var(--v-background-darken2) !important;
+  caret-color: var(--v-background-darken2) !important;
+}
+.v-application .background.darken-3 {
+  background-color: var(--v-background-darken3) !important;
+  border-color: var(--v-background-darken3) !important;
+}
+.v-application .background--text.text--darken-3 {
+  color: var(--v-background-darken3) !important;
+  caret-color: var(--v-background-darken3) !important;
+}
+.v-application .background.darken-4 {
+  background-color: var(--v-background-darken4) !important;
+  border-color: var(--v-background-darken4) !important;
+}
+.v-application .background--text.text--darken-4 {
+  color: var(--v-background-darken4) !important;
+  caret-color: var(--v-background-darken4) !important;
+}</style><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div id="app" data-server-rendered="true"><nav class="controller"><button>Shuffle</button><div class="sorters"><button>Merge</button><button>Tim</button><button>
+        Insertion
+      </button><button>Quick</button></div><div class="knobs"><div class="knob-group"><label for="width">Width</label><input id="width" type="range" min="2" max="80" step="2" value="5"></div><div class="knob-group"><label for="delay">Delay</label><input id="delay" type="range" min="0" max="1000" step="10" value="10"></div></div></nav><div class="container-proj"><div class="array"><div class="el default" style="width:5px;height:81px;left:1px;"></div><div class="el default" style="width:5px;height:209px;left:6px;"></div><div class="el default" style="width:5px;height:250px;left:11px;"></div><div class="el default" style="width:5px;height:137px;left:16px;"></div><div class="el default" style="width:5px;height:171px;left:21px;"></div><div class="el default" style="width:5px;height:165px;left:26px;"></div><div class="el default" style="width:5px;height:453px;left:31px;"></div><div class="el default" style="width:5px;height:118px;left:36px;"></div><div class="el default" style="width:5px;height:309px;left:41px;"></div><div class="el default" style="width:5px;height:381px;left:46px;"></div><div class="el default" style="width:5px;height:450px;left:51px;"></div><div class="el default" style="width:5px;height:371px;left:56px;"></div><div class="el default" style="width:5px;height:393px;left:61px;"></div><div class="el default" style="width:5px;height:287px;left:66px;"></div><div class="el default" style="width:5px;height:128px;left:71px;"></div><div class="el default" style="width:5px;height:293px;left:76px;"></div><div class="el default" style="width:5px;height:190px;left:81px;"></div><div class="el default" style="width:5px;height:175px;left:86px;"></div><div class="el default" style="width:5px;height:396px;left:91px;"></div><div class="el default" style="width:5px;height:318px;left:96px;"></div><div class="el default" style="width:5px;height:125px;left:101px;"></div><div class="el default" style="width:5px;height:468px;left:106px;"></div><div class="el default" style="width:5px;height:387px;left:111px;"></div><div class="el default" style="width:5px;height:303px;left:116px;"></div><div class="el default" style="width:5px;height:196px;left:121px;"></div><div class="el default" style="width:5px;height:93px;left:126px;"></div><div class="el default" style="width:5px;height:275px;left:131px;"></div><div class="el default" style="width:5px;height:400px;left:136px;"></div><div class="el default" style="width:5px;height:253px;left:141px;"></div><div class="el default" style="width:5px;height:359px;left:146px;"></div><div class="el default" style="width:5px;height:428px;left:151px;"></div><div class="el default" style="width:5px;height:71px;left:156px;"></div><div class="el default" style="width:5px;height:109px;left:161px;"></div><div class="el default" style="width:5px;height:96px;left:166px;"></div><div class="el default" style="width:5px;height:146px;left:171px;"></div><div class="el default" style="width:5px;height:90px;left:176px;"></div><div class="el default" style="width:5px;height:112px;left:181px;"></div><div class="el default" style="width:5px;height:418px;left:186px;"></div><div class="el default" style="width:5px;height:156px;left:191px;"></div><div class="el default" style="width:5px;height:228px;left:196px;"></div><div class="el default" style="width:5px;height:412px;left:201px;"></div><div class="el default" style="width:5px;height:493px;left:206px;"></div><div class="el default" style="width:5px;height:437px;left:211px;"></div><div class="el default" style="width:5px;height:475px;left:216px;"></div><div class="el default" style="width:5px;height:268px;left:221px;"></div><div class="el default" style="width:5px;height:496px;left:226px;"></div><div class="el default" style="width:5px;height:425px;left:231px;"></div><div class="el default" style="width:5px;height:440px;left:236px;"></div><div class="el default" style="width:5px;height:34px;left:241px;"></div><div class="el default" style="width:5px;height:3px;left:246px;"></div><div class="el default" style="width:5px;height:203px;left:251px;"></div><div class="el default" style="width:5px;height:215px;left:256px;"></div><div class="el default" style="width:5px;height:471px;left:261px;"></div><div class="el default" style="width:5px;height:325px;left:266px;"></div><div class="el default" style="width:5px;height:484px;left:271px;"></div><div class="el default" style="width:5px;height:184px;left:276px;"></div><div class="el default" style="width:5px;height:131px;left:281px;"></div><div class="el default" style="width:5px;height:431px;left:286px;"></div><div class="el default" style="width:5px;height:181px;left:291px;"></div><div class="el default" style="width:5px;height:28px;left:296px;"></div><div class="el default" style="width:5px;height:115px;left:301px;"></div><div class="el default" style="width:5px;height:262px;left:306px;"></div><div class="el default" style="width:5px;height:284px;left:311px;"></div><div class="el default" style="width:5px;height:200px;left:316px;"></div><div class="el default" style="width:5px;height:62px;left:321px;"></div><div class="el default" style="width:5px;height:478px;left:326px;"></div><div class="el default" style="width:5px;height:415px;left:331px;"></div><div class="el default" style="width:5px;height:150px;left:336px;"></div><div class="el default" style="width:5px;height:84px;left:341px;"></div><div class="el default" style="width:5px;height:6px;left:346px;"></div><div class="el default" style="width:5px;height:296px;left:351px;"></div><div class="el default" style="width:5px;height:100px;left:356px;"></div><div class="el default" style="width:5px;height:481px;left:361px;"></div><div class="el default" style="width:5px;height:40px;left:366px;"></div><div class="el default" style="width:5px;height:243px;left:371px;"></div><div class="el default" style="width:5px;height:218px;left:376px;"></div><div class="el default" style="width:5px;height:18px;left:381px;"></div><div class="el default" style="width:5px;height:281px;left:386px;"></div><div class="el default" style="width:5px;height:225px;left:391px;"></div><div class="el default" style="width:5px;height:12px;left:396px;"></div><div class="el default" style="width:5px;height:350px;left:401px;"></div><div class="el default" style="width:5px;height:353px;left:406px;"></div><div class="el default" style="width:5px;height:168px;left:411px;"></div><div class="el default" style="width:5px;height:375px;left:416px;"></div><div class="el default" style="width:5px;height:384px;left:421px;"></div><div class="el default" style="width:5px;height:443px;left:426px;"></div><div class="el default" style="width:5px;height:265px;left:431px;"></div><div class="el default" style="width:5px;height:343px;left:436px;"></div><div class="el default" style="width:5px;height:140px;left:441px;"></div><div class="el default" style="width:5px;height:271px;left:446px;"></div><div class="el default" style="width:5px;height:234px;left:451px;"></div><div class="el default" style="width:5px;height:490px;left:456px;"></div><div class="el default" style="width:5px;height:103px;left:461px;"></div><div class="el default" style="width:5px;height:246px;left:466px;"></div><div class="el default" style="width:5px;height:31px;left:471px;"></div><div class="el default" style="width:5px;height:65px;left:476px;"></div><div class="el default" style="width:5px;height:356px;left:481px;"></div><div class="el default" style="width:5px;height:143px;left:486px;"></div><div class="el default" style="width:5px;height:78px;left:491px;"></div><div class="el default" style="width:5px;height:9px;left:496px;"></div><div class="el default" style="width:5px;height:193px;left:501px;"></div><div class="el default" style="width:5px;height:231px;left:506px;"></div><div class="el default" style="width:5px;height:59px;left:511px;"></div><div class="el default" style="width:5px;height:434px;left:516px;"></div><div class="el default" style="width:5px;height:390px;left:521px;"></div><div class="el default" style="width:5px;height:456px;left:526px;"></div><div class="el default" style="width:5px;height:15px;left:531px;"></div><div class="el default" style="width:5px;height:290px;left:536px;"></div><div class="el default" style="width:5px;height:312px;left:541px;"></div><div class="el default" style="width:5px;height:178px;left:546px;"></div><div class="el default" style="width:5px;height:46px;left:551px;"></div><div class="el default" style="width:5px;height:206px;left:556px;"></div><div class="el default" style="width:5px;height:43px;left:561px;"></div><div class="el default" style="width:5px;height:362px;left:566px;"></div><div class="el default" style="width:5px;height:278px;left:571px;"></div><div class="el default" style="width:5px;height:334px;left:576px;"></div><div class="el default" style="width:5px;height:259px;left:581px;"></div><div class="el default" style="width:5px;height:421px;left:586px;"></div><div class="el default" style="width:5px;height:462px;left:591px;"></div><div class="el default" style="width:5px;height:321px;left:596px;"></div><div class="el default" style="width:5px;height:37px;left:601px;"></div><div class="el default" style="width:5px;height:340px;left:606px;"></div><div class="el default" style="width:5px;height:153px;left:611px;"></div><div class="el default" style="width:5px;height:487px;left:616px;"></div><div class="el default" style="width:5px;height:75px;left:621px;"></div><div class="el default" style="width:5px;height:365px;left:626px;"></div><div class="el default" style="width:5px;height:162px;left:631px;"></div><div class="el default" style="width:5px;height:331px;left:636px;"></div><div class="el default" style="width:5px;height:187px;left:641px;"></div><div class="el default" style="width:5px;height:221px;left:646px;"></div><div class="el default" style="width:5px;height:465px;left:651px;"></div><div class="el default" style="width:5px;height:403px;left:656px;"></div><div class="el default" style="width:5px;height:300px;left:661px;"></div><div class="el default" style="width:5px;height:328px;left:666px;"></div><div class="el default" style="width:5px;height:346px;left:671px;"></div><div class="el default" style="width:5px;height:240px;left:676px;"></div><div class="el default" style="width:5px;height:368px;left:681px;"></div><div class="el default" style="width:5px;height:87px;left:686px;"></div><div class="el default" style="width:5px;height:21px;left:691px;"></div><div class="el default" style="width:5px;height:315px;left:696px;"></div><div class="el default" style="width:5px;height:459px;left:701px;"></div><div class="el default" style="width:5px;height:409px;left:706px;"></div><div class="el default" style="width:5px;height:212px;left:711px;"></div><div class="el default" style="width:5px;height:159px;left:716px;"></div><div class="el default" style="width:5px;height:446px;left:721px;"></div><div class="el default" style="width:5px;height:237px;left:726px;"></div><div class="el default" style="width:5px;height:25px;left:731px;"></div><div class="el default" style="width:5px;height:134px;left:736px;"></div><div class="el default" style="width:5px;height:68px;left:741px;"></div><div class="el default" style="width:5px;height:406px;left:746px;"></div><div class="el default" style="width:5px;height:53px;left:751px;"></div><div class="el default" style="width:5px;height:337px;left:756px;"></div><div class="el default" style="width:5px;height:306px;left:761px;"></div><div class="el default" style="width:5px;height:106px;left:766px;"></div><div class="el default" style="width:5px;height:121px;left:771px;"></div><div class="el default" style="width:5px;height:50px;left:776px;"></div><div class="el default" style="width:5px;height:500px;left:781px;"></div><div class="el default" style="width:5px;height:256px;left:786px;"></div><div class="el default" style="width:5px;height:378px;left:791px;"></div><div class="el default" style="width:5px;height:56px;left:796px;"></div></div></div></div>
+    <script>window.__INITIAL_STATE__={"data":null,"context":{}};(function(){var s;(s=document.currentScript||document.scripts[document.scripts.length-1]).parentNode.removeChild(s);}());</script><script src="/assets/js/app.640e4b72.js" defer></script><script src="/assets/js/page--src--pages--projects--sorting-visualizer--index-vue.b8c458fa.js" defer></script>
+  </body>
+</html>

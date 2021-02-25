@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html data-html-server-rendered="true" lang="en" data-vue-tag="%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D">
+  <head>
+    <title>Data Generators In Tensorflow</title><meta name="gridsome:hash" content="5b5f75d25e19532c39ff18cd701a577df7c533a1"><meta data-vue-tag="ssr" charset="utf-8"><meta data-vue-tag="ssr" name="generator" content="Gridsome v0.7.23"><meta data-vue-tag="ssr" data-key="viewport" name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"><meta data-vue-tag="ssr" data-key="format-detection" name="format-detection" content="telephone=no"><meta data-vue-tag="ssr" property="og:type" content="article"><meta data-vue-tag="ssr" property="og:title" content="Data Generators In Tensorflow"><meta data-vue-tag="ssr" property="og:image" content="https://mahmoudyusof.github.io/seo_images/data-generator.jpg"><meta data-vue-tag="ssr" property="og:description" content="explaining how to load batches of data into memory instead of the entire dataset for more effeciency"><meta data-vue-tag="ssr" property="og:url" content="https://mahmoudyusof.github.io/facial-keypoint-detection/data-generator/"><link data-vue-tag="ssr" rel="icon" href="data:,"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="16x16" href="/assets/static/favicon.ce0531f.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="icon" type="image/png" sizes="32x32" href="/assets/static/favicon.ac8d93a.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="apple-touch-icon" type="image/png" sizes="76x76" href="/assets/static/favicon.f22e9f3.24997f41124815fbd54f8ef1117b7c92.png"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400&amp;display=swap"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&amp;display=swap"><link data-vue-tag="ssr" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons"><link rel="preload" href="/assets/css/0.styles.c4bea370.css" as="style"><link rel="preload" href="/assets/js/app.640e4b72.js" as="script"><link rel="preload" href="/assets/js/page--src--templates--article-vue.e8a69820.js" as="script"><link rel="prefetch" href="/assets/js/page--src--pages--404-vue.ef18b5d0.js"><link rel="prefetch" href="/assets/js/page--src--pages--index-vue.8ae0bfae.js"><link rel="prefetch" href="/assets/js/page--src--pages--projects--digit-image-generator--index-vue.f2ad3337.js"><link rel="prefetch" href="/assets/js/page--src--pages--projects--sorting-visualizer--index-vue.b8c458fa.js"><link rel="prefetch" href="/assets/js/vendors~page--src--pages--projects--digit-image-generator--index-vue.604604e6.js"><link rel="stylesheet" href="/assets/css/0.styles.c4bea370.css"><style data-vue-tag="vuetify" type="text/css" id="vuetify-theme-stylesheet" nonce="undefined">:root {
+  --v-anchor-base: #263238;
+  --v-primary-base: #263238;
+  --v-primary-lighten5: #9fadb5;
+  --v-primary-lighten4: #85939a;
+  --v-primary-lighten3: #6c7980;
+  --v-primary-lighten2: #536067;
+  --v-primary-lighten1: #3c484f;
+  --v-primary-darken1: #111d23;
+  --v-primary-darken2: #00030d;
+  --v-primary-darken3: #000000;
+  --v-primary-darken4: #000000;
+  --v-secondary-base: #37474f;
+  --v-secondary-lighten5: #b5c7d0;
+  --v-secondary-lighten4: #9aacb5;
+  --v-secondary-lighten3: #80919a;
+  --v-secondary-lighten2: #677780;
+  --v-secondary-lighten1: #4e5f67;
+  --v-secondary-darken1: #213138;
+  --v-secondary-darken2: #0c1c23;
+  --v-secondary-darken3: #00010d;
+  --v-secondary-darken4: #000000;
+  --v-accent-base: #57676f;
+  --v-accent-lighten5: #dbedf6;
+  --v-accent-lighten4: #bfd0d9;
+  --v-accent-lighten3: #a4b5be;
+  --v-accent-lighten2: #899aa3;
+  --v-accent-lighten1: #708088;
+  --v-accent-darken1: #3f4f57;
+  --v-accent-darken2: #29383f;
+  --v-accent-darken3: #142329;
+  --v-accent-darken4: #000d15;
+  --v-error-base: #ff5252;
+  --v-error-lighten5: #ffe4d5;
+  --v-error-lighten4: #ffc6b9;
+  --v-error-lighten3: #ffa99e;
+  --v-error-lighten2: #ff8c84;
+  --v-error-lighten1: #ff6f6a;
+  --v-error-darken1: #df323b;
+  --v-error-darken2: #bf0025;
+  --v-error-darken3: #9f0010;
+  --v-error-darken4: #800000;
+  --v-info-base: #2196f3;
+  --v-info-lighten5: #d4ffff;
+  --v-info-lighten4: #b5ffff;
+  --v-info-lighten3: #95e8ff;
+  --v-info-lighten2: #75ccff;
+  --v-info-lighten1: #51b0ff;
+  --v-info-darken1: #007cd6;
+  --v-info-darken2: #0064ba;
+  --v-info-darken3: #004d9f;
+  --v-info-darken4: #003784;
+  --v-success-base: #4caf50;
+  --v-success-lighten5: #dcffd6;
+  --v-success-lighten4: #beffba;
+  --v-success-lighten3: #a2ff9e;
+  --v-success-lighten2: #85e783;
+  --v-success-lighten1: #69cb69;
+  --v-success-darken1: #2d9437;
+  --v-success-darken2: #00791e;
+  --v-success-darken3: #006000;
+  --v-success-darken4: #004700;
+  --v-warning-base: #fb8c00;
+  --v-warning-lighten5: #ffff9e;
+  --v-warning-lighten4: #fffb82;
+  --v-warning-lighten3: #ffdf67;
+  --v-warning-lighten2: #ffc24b;
+  --v-warning-lighten1: #ffa72d;
+  --v-warning-darken1: #db7200;
+  --v-warning-darken2: #bb5900;
+  --v-warning-darken3: #9d4000;
+  --v-warning-darken4: #802700;
+  --v-text-base: #ffffff;
+  --v-text-lighten5: #ffffff;
+  --v-text-lighten4: #ffffff;
+  --v-text-lighten3: #ffffff;
+  --v-text-lighten2: #ffffff;
+  --v-text-lighten1: #ffffff;
+  --v-text-darken1: #e2e2e2;
+  --v-text-darken2: #c6c6c6;
+  --v-text-darken3: #ababab;
+  --v-text-darken4: #919191;
+  --v-background-base: #263238;
+  --v-background-lighten5: #9fadb5;
+  --v-background-lighten4: #85939a;
+  --v-background-lighten3: #6c7980;
+  --v-background-lighten2: #536067;
+  --v-background-lighten1: #3c484f;
+  --v-background-darken1: #111d23;
+  --v-background-darken2: #00030d;
+  --v-background-darken3: #000000;
+  --v-background-darken4: #000000;
+}
+
+.v-application a { color: var(--v-anchor-base); }
+.v-application .primary {
+  background-color: var(--v-primary-base) !important;
+  border-color: var(--v-primary-base) !important;
+}
+.v-application .primary--text {
+  color: var(--v-primary-base) !important;
+  caret-color: var(--v-primary-base) !important;
+}
+.v-application .primary.lighten-5 {
+  background-color: var(--v-primary-lighten5) !important;
+  border-color: var(--v-primary-lighten5) !important;
+}
+.v-application .primary--text.text--lighten-5 {
+  color: var(--v-primary-lighten5) !important;
+  caret-color: var(--v-primary-lighten5) !important;
+}
+.v-application .primary.lighten-4 {
+  background-color: var(--v-primary-lighten4) !important;
+  border-color: var(--v-primary-lighten4) !important;
+}
+.v-application .primary--text.text--lighten-4 {
+  color: var(--v-primary-lighten4) !important;
+  caret-color: var(--v-primary-lighten4) !important;
+}
+.v-application .primary.lighten-3 {
+  background-color: var(--v-primary-lighten3) !important;
+  border-color: var(--v-primary-lighten3) !important;
+}
+.v-application .primary--text.text--lighten-3 {
+  color: var(--v-primary-lighten3) !important;
+  caret-color: var(--v-primary-lighten3) !important;
+}
+.v-application .primary.lighten-2 {
+  background-color: var(--v-primary-lighten2) !important;
+  border-color: var(--v-primary-lighten2) !important;
+}
+.v-application .primary--text.text--lighten-2 {
+  color: var(--v-primary-lighten2) !important;
+  caret-color: var(--v-primary-lighten2) !important;
+}
+.v-application .primary.lighten-1 {
+  background-color: var(--v-primary-lighten1) !important;
+  border-color: var(--v-primary-lighten1) !important;
+}
+.v-application .primary--text.text--lighten-1 {
+  color: var(--v-primary-lighten1) !important;
+  caret-color: var(--v-primary-lighten1) !important;
+}
+.v-application .primary.darken-1 {
+  background-color: var(--v-primary-darken1) !important;
+  border-color: var(--v-primary-darken1) !important;
+}
+.v-application .primary--text.text--darken-1 {
+  color: var(--v-primary-darken1) !important;
+  caret-color: var(--v-primary-darken1) !important;
+}
+.v-application .primary.darken-2 {
+  background-color: var(--v-primary-darken2) !important;
+  border-color: var(--v-primary-darken2) !important;
+}
+.v-application .primary--text.text--darken-2 {
+  color: var(--v-primary-darken2) !important;
+  caret-color: var(--v-primary-darken2) !important;
+}
+.v-application .primary.darken-3 {
+  background-color: var(--v-primary-darken3) !important;
+  border-color: var(--v-primary-darken3) !important;
+}
+.v-application .primary--text.text--darken-3 {
+  color: var(--v-primary-darken3) !important;
+  caret-color: var(--v-primary-darken3) !important;
+}
+.v-application .primary.darken-4 {
+  background-color: var(--v-primary-darken4) !important;
+  border-color: var(--v-primary-darken4) !important;
+}
+.v-application .primary--text.text--darken-4 {
+  color: var(--v-primary-darken4) !important;
+  caret-color: var(--v-primary-darken4) !important;
+}
+.v-application .secondary {
+  background-color: var(--v-secondary-base) !important;
+  border-color: var(--v-secondary-base) !important;
+}
+.v-application .secondary--text {
+  color: var(--v-secondary-base) !important;
+  caret-color: var(--v-secondary-base) !important;
+}
+.v-application .secondary.lighten-5 {
+  background-color: var(--v-secondary-lighten5) !important;
+  border-color: var(--v-secondary-lighten5) !important;
+}
+.v-application .secondary--text.text--lighten-5 {
+  color: var(--v-secondary-lighten5) !important;
+  caret-color: var(--v-secondary-lighten5) !important;
+}
+.v-application .secondary.lighten-4 {
+  background-color: var(--v-secondary-lighten4) !important;
+  border-color: var(--v-secondary-lighten4) !important;
+}
+.v-application .secondary--text.text--lighten-4 {
+  color: var(--v-secondary-lighten4) !important;
+  caret-color: var(--v-secondary-lighten4) !important;
+}
+.v-application .secondary.lighten-3 {
+  background-color: var(--v-secondary-lighten3) !important;
+  border-color: var(--v-secondary-lighten3) !important;
+}
+.v-application .secondary--text.text--lighten-3 {
+  color: var(--v-secondary-lighten3) !important;
+  caret-color: var(--v-secondary-lighten3) !important;
+}
+.v-application .secondary.lighten-2 {
+  background-color: var(--v-secondary-lighten2) !important;
+  border-color: var(--v-secondary-lighten2) !important;
+}
+.v-application .secondary--text.text--lighten-2 {
+  color: var(--v-secondary-lighten2) !important;
+  caret-color: var(--v-secondary-lighten2) !important;
+}
+.v-application .secondary.lighten-1 {
+  background-color: var(--v-secondary-lighten1) !important;
+  border-color: var(--v-secondary-lighten1) !important;
+}
+.v-application .secondary--text.text--lighten-1 {
+  color: var(--v-secondary-lighten1) !important;
+  caret-color: var(--v-secondary-lighten1) !important;
+}
+.v-application .secondary.darken-1 {
+  background-color: var(--v-secondary-darken1) !important;
+  border-color: var(--v-secondary-darken1) !important;
+}
+.v-application .secondary--text.text--darken-1 {
+  color: var(--v-secondary-darken1) !important;
+  caret-color: var(--v-secondary-darken1) !important;
+}
+.v-application .secondary.darken-2 {
+  background-color: var(--v-secondary-darken2) !important;
+  border-color: var(--v-secondary-darken2) !important;
+}
+.v-application .secondary--text.text--darken-2 {
+  color: var(--v-secondary-darken2) !important;
+  caret-color: var(--v-secondary-darken2) !important;
+}
+.v-application .secondary.darken-3 {
+  background-color: var(--v-secondary-darken3) !important;
+  border-color: var(--v-secondary-darken3) !important;
+}
+.v-application .secondary--text.text--darken-3 {
+  color: var(--v-secondary-darken3) !important;
+  caret-color: var(--v-secondary-darken3) !important;
+}
+.v-application .secondary.darken-4 {
+  background-color: var(--v-secondary-darken4) !important;
+  border-color: var(--v-secondary-darken4) !important;
+}
+.v-application .secondary--text.text--darken-4 {
+  color: var(--v-secondary-darken4) !important;
+  caret-color: var(--v-secondary-darken4) !important;
+}
+.v-application .accent {
+  background-color: var(--v-accent-base) !important;
+  border-color: var(--v-accent-base) !important;
+}
+.v-application .accent--text {
+  color: var(--v-accent-base) !important;
+  caret-color: var(--v-accent-base) !important;
+}
+.v-application .accent.lighten-5 {
+  background-color: var(--v-accent-lighten5) !important;
+  border-color: var(--v-accent-lighten5) !important;
+}
+.v-application .accent--text.text--lighten-5 {
+  color: var(--v-accent-lighten5) !important;
+  caret-color: var(--v-accent-lighten5) !important;
+}
+.v-application .accent.lighten-4 {
+  background-color: var(--v-accent-lighten4) !important;
+  border-color: var(--v-accent-lighten4) !important;
+}
+.v-application .accent--text.text--lighten-4 {
+  color: var(--v-accent-lighten4) !important;
+  caret-color: var(--v-accent-lighten4) !important;
+}
+.v-application .accent.lighten-3 {
+  background-color: var(--v-accent-lighten3) !important;
+  border-color: var(--v-accent-lighten3) !important;
+}
+.v-application .accent--text.text--lighten-3 {
+  color: var(--v-accent-lighten3) !important;
+  caret-color: var(--v-accent-lighten3) !important;
+}
+.v-application .accent.lighten-2 {
+  background-color: var(--v-accent-lighten2) !important;
+  border-color: var(--v-accent-lighten2) !important;
+}
+.v-application .accent--text.text--lighten-2 {
+  color: var(--v-accent-lighten2) !important;
+  caret-color: var(--v-accent-lighten2) !important;
+}
+.v-application .accent.lighten-1 {
+  background-color: var(--v-accent-lighten1) !important;
+  border-color: var(--v-accent-lighten1) !important;
+}
+.v-application .accent--text.text--lighten-1 {
+  color: var(--v-accent-lighten1) !important;
+  caret-color: var(--v-accent-lighten1) !important;
+}
+.v-application .accent.darken-1 {
+  background-color: var(--v-accent-darken1) !important;
+  border-color: var(--v-accent-darken1) !important;
+}
+.v-application .accent--text.text--darken-1 {
+  color: var(--v-accent-darken1) !important;
+  caret-color: var(--v-accent-darken1) !important;
+}
+.v-application .accent.darken-2 {
+  background-color: var(--v-accent-darken2) !important;
+  border-color: var(--v-accent-darken2) !important;
+}
+.v-application .accent--text.text--darken-2 {
+  color: var(--v-accent-darken2) !important;
+  caret-color: var(--v-accent-darken2) !important;
+}
+.v-application .accent.darken-3 {
+  background-color: var(--v-accent-darken3) !important;
+  border-color: var(--v-accent-darken3) !important;
+}
+.v-application .accent--text.text--darken-3 {
+  color: var(--v-accent-darken3) !important;
+  caret-color: var(--v-accent-darken3) !important;
+}
+.v-application .accent.darken-4 {
+  background-color: var(--v-accent-darken4) !important;
+  border-color: var(--v-accent-darken4) !important;
+}
+.v-application .accent--text.text--darken-4 {
+  color: var(--v-accent-darken4) !important;
+  caret-color: var(--v-accent-darken4) !important;
+}
+.v-application .error {
+  background-color: var(--v-error-base) !important;
+  border-color: var(--v-error-base) !important;
+}
+.v-application .error--text {
+  color: var(--v-error-base) !important;
+  caret-color: var(--v-error-base) !important;
+}
+.v-application .error.lighten-5 {
+  background-color: var(--v-error-lighten5) !important;
+  border-color: var(--v-error-lighten5) !important;
+}
+.v-application .error--text.text--lighten-5 {
+  color: var(--v-error-lighten5) !important;
+  caret-color: var(--v-error-lighten5) !important;
+}
+.v-application .error.lighten-4 {
+  background-color: var(--v-error-lighten4) !important;
+  border-color: var(--v-error-lighten4) !important;
+}
+.v-application .error--text.text--lighten-4 {
+  color: var(--v-error-lighten4) !important;
+  caret-color: var(--v-error-lighten4) !important;
+}
+.v-application .error.lighten-3 {
+  background-color: var(--v-error-lighten3) !important;
+  border-color: var(--v-error-lighten3) !important;
+}
+.v-application .error--text.text--lighten-3 {
+  color: var(--v-error-lighten3) !important;
+  caret-color: var(--v-error-lighten3) !important;
+}
+.v-application .error.lighten-2 {
+  background-color: var(--v-error-lighten2) !important;
+  border-color: var(--v-error-lighten2) !important;
+}
+.v-application .error--text.text--lighten-2 {
+  color: var(--v-error-lighten2) !important;
+  caret-color: var(--v-error-lighten2) !important;
+}
+.v-application .error.lighten-1 {
+  background-color: var(--v-error-lighten1) !important;
+  border-color: var(--v-error-lighten1) !important;
+}
+.v-application .error--text.text--lighten-1 {
+  color: var(--v-error-lighten1) !important;
+  caret-color: var(--v-error-lighten1) !important;
+}
+.v-application .error.darken-1 {
+  background-color: var(--v-error-darken1) !important;
+  border-color: var(--v-error-darken1) !important;
+}
+.v-application .error--text.text--darken-1 {
+  color: var(--v-error-darken1) !important;
+  caret-color: var(--v-error-darken1) !important;
+}
+.v-application .error.darken-2 {
+  background-color: var(--v-error-darken2) !important;
+  border-color: var(--v-error-darken2) !important;
+}
+.v-application .error--text.text--darken-2 {
+  color: var(--v-error-darken2) !important;
+  caret-color: var(--v-error-darken2) !important;
+}
+.v-application .error.darken-3 {
+  background-color: var(--v-error-darken3) !important;
+  border-color: var(--v-error-darken3) !important;
+}
+.v-application .error--text.text--darken-3 {
+  color: var(--v-error-darken3) !important;
+  caret-color: var(--v-error-darken3) !important;
+}
+.v-application .error.darken-4 {
+  background-color: var(--v-error-darken4) !important;
+  border-color: var(--v-error-darken4) !important;
+}
+.v-application .error--text.text--darken-4 {
+  color: var(--v-error-darken4) !important;
+  caret-color: var(--v-error-darken4) !important;
+}
+.v-application .info {
+  background-color: var(--v-info-base) !important;
+  border-color: var(--v-info-base) !important;
+}
+.v-application .info--text {
+  color: var(--v-info-base) !important;
+  caret-color: var(--v-info-base) !important;
+}
+.v-application .info.lighten-5 {
+  background-color: var(--v-info-lighten5) !important;
+  border-color: var(--v-info-lighten5) !important;
+}
+.v-application .info--text.text--lighten-5 {
+  color: var(--v-info-lighten5) !important;
+  caret-color: var(--v-info-lighten5) !important;
+}
+.v-application .info.lighten-4 {
+  background-color: var(--v-info-lighten4) !important;
+  border-color: var(--v-info-lighten4) !important;
+}
+.v-application .info--text.text--lighten-4 {
+  color: var(--v-info-lighten4) !important;
+  caret-color: var(--v-info-lighten4) !important;
+}
+.v-application .info.lighten-3 {
+  background-color: var(--v-info-lighten3) !important;
+  border-color: var(--v-info-lighten3) !important;
+}
+.v-application .info--text.text--lighten-3 {
+  color: var(--v-info-lighten3) !important;
+  caret-color: var(--v-info-lighten3) !important;
+}
+.v-application .info.lighten-2 {
+  background-color: var(--v-info-lighten2) !important;
+  border-color: var(--v-info-lighten2) !important;
+}
+.v-application .info--text.text--lighten-2 {
+  color: var(--v-info-lighten2) !important;
+  caret-color: var(--v-info-lighten2) !important;
+}
+.v-application .info.lighten-1 {
+  background-color: var(--v-info-lighten1) !important;
+  border-color: var(--v-info-lighten1) !important;
+}
+.v-application .info--text.text--lighten-1 {
+  color: var(--v-info-lighten1) !important;
+  caret-color: var(--v-info-lighten1) !important;
+}
+.v-application .info.darken-1 {
+  background-color: var(--v-info-darken1) !important;
+  border-color: var(--v-info-darken1) !important;
+}
+.v-application .info--text.text--darken-1 {
+  color: var(--v-info-darken1) !important;
+  caret-color: var(--v-info-darken1) !important;
+}
+.v-application .info.darken-2 {
+  background-color: var(--v-info-darken2) !important;
+  border-color: var(--v-info-darken2) !important;
+}
+.v-application .info--text.text--darken-2 {
+  color: var(--v-info-darken2) !important;
+  caret-color: var(--v-info-darken2) !important;
+}
+.v-application .info.darken-3 {
+  background-color: var(--v-info-darken3) !important;
+  border-color: var(--v-info-darken3) !important;
+}
+.v-application .info--text.text--darken-3 {
+  color: var(--v-info-darken3) !important;
+  caret-color: var(--v-info-darken3) !important;
+}
+.v-application .info.darken-4 {
+  background-color: var(--v-info-darken4) !important;
+  border-color: var(--v-info-darken4) !important;
+}
+.v-application .info--text.text--darken-4 {
+  color: var(--v-info-darken4) !important;
+  caret-color: var(--v-info-darken4) !important;
+}
+.v-application .success {
+  background-color: var(--v-success-base) !important;
+  border-color: var(--v-success-base) !important;
+}
+.v-application .success--text {
+  color: var(--v-success-base) !important;
+  caret-color: var(--v-success-base) !important;
+}
+.v-application .success.lighten-5 {
+  background-color: var(--v-success-lighten5) !important;
+  border-color: var(--v-success-lighten5) !important;
+}
+.v-application .success--text.text--lighten-5 {
+  color: var(--v-success-lighten5) !important;
+  caret-color: var(--v-success-lighten5) !important;
+}
+.v-application .success.lighten-4 {
+  background-color: var(--v-success-lighten4) !important;
+  border-color: var(--v-success-lighten4) !important;
+}
+.v-application .success--text.text--lighten-4 {
+  color: var(--v-success-lighten4) !important;
+  caret-color: var(--v-success-lighten4) !important;
+}
+.v-application .success.lighten-3 {
+  background-color: var(--v-success-lighten3) !important;
+  border-color: var(--v-success-lighten3) !important;
+}
+.v-application .success--text.text--lighten-3 {
+  color: var(--v-success-lighten3) !important;
+  caret-color: var(--v-success-lighten3) !important;
+}
+.v-application .success.lighten-2 {
+  background-color: var(--v-success-lighten2) !important;
+  border-color: var(--v-success-lighten2) !important;
+}
+.v-application .success--text.text--lighten-2 {
+  color: var(--v-success-lighten2) !important;
+  caret-color: var(--v-success-lighten2) !important;
+}
+.v-application .success.lighten-1 {
+  background-color: var(--v-success-lighten1) !important;
+  border-color: var(--v-success-lighten1) !important;
+}
+.v-application .success--text.text--lighten-1 {
+  color: var(--v-success-lighten1) !important;
+  caret-color: var(--v-success-lighten1) !important;
+}
+.v-application .success.darken-1 {
+  background-color: var(--v-success-darken1) !important;
+  border-color: var(--v-success-darken1) !important;
+}
+.v-application .success--text.text--darken-1 {
+  color: var(--v-success-darken1) !important;
+  caret-color: var(--v-success-darken1) !important;
+}
+.v-application .success.darken-2 {
+  background-color: var(--v-success-darken2) !important;
+  border-color: var(--v-success-darken2) !important;
+}
+.v-application .success--text.text--darken-2 {
+  color: var(--v-success-darken2) !important;
+  caret-color: var(--v-success-darken2) !important;
+}
+.v-application .success.darken-3 {
+  background-color: var(--v-success-darken3) !important;
+  border-color: var(--v-success-darken3) !important;
+}
+.v-application .success--text.text--darken-3 {
+  color: var(--v-success-darken3) !important;
+  caret-color: var(--v-success-darken3) !important;
+}
+.v-application .success.darken-4 {
+  background-color: var(--v-success-darken4) !important;
+  border-color: var(--v-success-darken4) !important;
+}
+.v-application .success--text.text--darken-4 {
+  color: var(--v-success-darken4) !important;
+  caret-color: var(--v-success-darken4) !important;
+}
+.v-application .warning {
+  background-color: var(--v-warning-base) !important;
+  border-color: var(--v-warning-base) !important;
+}
+.v-application .warning--text {
+  color: var(--v-warning-base) !important;
+  caret-color: var(--v-warning-base) !important;
+}
+.v-application .warning.lighten-5 {
+  background-color: var(--v-warning-lighten5) !important;
+  border-color: var(--v-warning-lighten5) !important;
+}
+.v-application .warning--text.text--lighten-5 {
+  color: var(--v-warning-lighten5) !important;
+  caret-color: var(--v-warning-lighten5) !important;
+}
+.v-application .warning.lighten-4 {
+  background-color: var(--v-warning-lighten4) !important;
+  border-color: var(--v-warning-lighten4) !important;
+}
+.v-application .warning--text.text--lighten-4 {
+  color: var(--v-warning-lighten4) !important;
+  caret-color: var(--v-warning-lighten4) !important;
+}
+.v-application .warning.lighten-3 {
+  background-color: var(--v-warning-lighten3) !important;
+  border-color: var(--v-warning-lighten3) !important;
+}
+.v-application .warning--text.text--lighten-3 {
+  color: var(--v-warning-lighten3) !important;
+  caret-color: var(--v-warning-lighten3) !important;
+}
+.v-application .warning.lighten-2 {
+  background-color: var(--v-warning-lighten2) !important;
+  border-color: var(--v-warning-lighten2) !important;
+}
+.v-application .warning--text.text--lighten-2 {
+  color: var(--v-warning-lighten2) !important;
+  caret-color: var(--v-warning-lighten2) !important;
+}
+.v-application .warning.lighten-1 {
+  background-color: var(--v-warning-lighten1) !important;
+  border-color: var(--v-warning-lighten1) !important;
+}
+.v-application .warning--text.text--lighten-1 {
+  color: var(--v-warning-lighten1) !important;
+  caret-color: var(--v-warning-lighten1) !important;
+}
+.v-application .warning.darken-1 {
+  background-color: var(--v-warning-darken1) !important;
+  border-color: var(--v-warning-darken1) !important;
+}
+.v-application .warning--text.text--darken-1 {
+  color: var(--v-warning-darken1) !important;
+  caret-color: var(--v-warning-darken1) !important;
+}
+.v-application .warning.darken-2 {
+  background-color: var(--v-warning-darken2) !important;
+  border-color: var(--v-warning-darken2) !important;
+}
+.v-application .warning--text.text--darken-2 {
+  color: var(--v-warning-darken2) !important;
+  caret-color: var(--v-warning-darken2) !important;
+}
+.v-application .warning.darken-3 {
+  background-color: var(--v-warning-darken3) !important;
+  border-color: var(--v-warning-darken3) !important;
+}
+.v-application .warning--text.text--darken-3 {
+  color: var(--v-warning-darken3) !important;
+  caret-color: var(--v-warning-darken3) !important;
+}
+.v-application .warning.darken-4 {
+  background-color: var(--v-warning-darken4) !important;
+  border-color: var(--v-warning-darken4) !important;
+}
+.v-application .warning--text.text--darken-4 {
+  color: var(--v-warning-darken4) !important;
+  caret-color: var(--v-warning-darken4) !important;
+}
+.v-application .text {
+  background-color: var(--v-text-base) !important;
+  border-color: var(--v-text-base) !important;
+}
+.v-application .text--text {
+  color: var(--v-text-base) !important;
+  caret-color: var(--v-text-base) !important;
+}
+.v-application .text.lighten-5 {
+  background-color: var(--v-text-lighten5) !important;
+  border-color: var(--v-text-lighten5) !important;
+}
+.v-application .text--text.text--lighten-5 {
+  color: var(--v-text-lighten5) !important;
+  caret-color: var(--v-text-lighten5) !important;
+}
+.v-application .text.lighten-4 {
+  background-color: var(--v-text-lighten4) !important;
+  border-color: var(--v-text-lighten4) !important;
+}
+.v-application .text--text.text--lighten-4 {
+  color: var(--v-text-lighten4) !important;
+  caret-color: var(--v-text-lighten4) !important;
+}
+.v-application .text.lighten-3 {
+  background-color: var(--v-text-lighten3) !important;
+  border-color: var(--v-text-lighten3) !important;
+}
+.v-application .text--text.text--lighten-3 {
+  color: var(--v-text-lighten3) !important;
+  caret-color: var(--v-text-lighten3) !important;
+}
+.v-application .text.lighten-2 {
+  background-color: var(--v-text-lighten2) !important;
+  border-color: var(--v-text-lighten2) !important;
+}
+.v-application .text--text.text--lighten-2 {
+  color: var(--v-text-lighten2) !important;
+  caret-color: var(--v-text-lighten2) !important;
+}
+.v-application .text.lighten-1 {
+  background-color: var(--v-text-lighten1) !important;
+  border-color: var(--v-text-lighten1) !important;
+}
+.v-application .text--text.text--lighten-1 {
+  color: var(--v-text-lighten1) !important;
+  caret-color: var(--v-text-lighten1) !important;
+}
+.v-application .text.darken-1 {
+  background-color: var(--v-text-darken1) !important;
+  border-color: var(--v-text-darken1) !important;
+}
+.v-application .text--text.text--darken-1 {
+  color: var(--v-text-darken1) !important;
+  caret-color: var(--v-text-darken1) !important;
+}
+.v-application .text.darken-2 {
+  background-color: var(--v-text-darken2) !important;
+  border-color: var(--v-text-darken2) !important;
+}
+.v-application .text--text.text--darken-2 {
+  color: var(--v-text-darken2) !important;
+  caret-color: var(--v-text-darken2) !important;
+}
+.v-application .text.darken-3 {
+  background-color: var(--v-text-darken3) !important;
+  border-color: var(--v-text-darken3) !important;
+}
+.v-application .text--text.text--darken-3 {
+  color: var(--v-text-darken3) !important;
+  caret-color: var(--v-text-darken3) !important;
+}
+.v-application .text.darken-4 {
+  background-color: var(--v-text-darken4) !important;
+  border-color: var(--v-text-darken4) !important;
+}
+.v-application .text--text.text--darken-4 {
+  color: var(--v-text-darken4) !important;
+  caret-color: var(--v-text-darken4) !important;
+}
+.v-application .background {
+  background-color: var(--v-background-base) !important;
+  border-color: var(--v-background-base) !important;
+}
+.v-application .background--text {
+  color: var(--v-background-base) !important;
+  caret-color: var(--v-background-base) !important;
+}
+.v-application .background.lighten-5 {
+  background-color: var(--v-background-lighten5) !important;
+  border-color: var(--v-background-lighten5) !important;
+}
+.v-application .background--text.text--lighten-5 {
+  color: var(--v-background-lighten5) !important;
+  caret-color: var(--v-background-lighten5) !important;
+}
+.v-application .background.lighten-4 {
+  background-color: var(--v-background-lighten4) !important;
+  border-color: var(--v-background-lighten4) !important;
+}
+.v-application .background--text.text--lighten-4 {
+  color: var(--v-background-lighten4) !important;
+  caret-color: var(--v-background-lighten4) !important;
+}
+.v-application .background.lighten-3 {
+  background-color: var(--v-background-lighten3) !important;
+  border-color: var(--v-background-lighten3) !important;
+}
+.v-application .background--text.text--lighten-3 {
+  color: var(--v-background-lighten3) !important;
+  caret-color: var(--v-background-lighten3) !important;
+}
+.v-application .background.lighten-2 {
+  background-color: var(--v-background-lighten2) !important;
+  border-color: var(--v-background-lighten2) !important;
+}
+.v-application .background--text.text--lighten-2 {
+  color: var(--v-background-lighten2) !important;
+  caret-color: var(--v-background-lighten2) !important;
+}
+.v-application .background.lighten-1 {
+  background-color: var(--v-background-lighten1) !important;
+  border-color: var(--v-background-lighten1) !important;
+}
+.v-application .background--text.text--lighten-1 {
+  color: var(--v-background-lighten1) !important;
+  caret-color: var(--v-background-lighten1) !important;
+}
+.v-application .background.darken-1 {
+  background-color: var(--v-background-darken1) !important;
+  border-color: var(--v-background-darken1) !important;
+}
+.v-application .background--text.text--darken-1 {
+  color: var(--v-background-darken1) !important;
+  caret-color: var(--v-background-darken1) !important;
+}
+.v-application .background.darken-2 {
+  background-color: var(--v-background-darken2) !important;
+  border-color: var(--v-background-darken2) !important;
+}
+.v-application .background--text.text--darken-2 {
+  color: var(--v-background-darken2) !important;
+  caret-color: var(--v-background-darken2) !important;
+}
+.v-application .background.darken-3 {
+  background-color: var(--v-background-darken3) !important;
+  border-color: var(--v-background-darken3) !important;
+}
+.v-application .background--text.text--darken-3 {
+  color: var(--v-background-darken3) !important;
+  caret-color: var(--v-background-darken3) !important;
+}
+.v-application .background.darken-4 {
+  background-color: var(--v-background-darken4) !important;
+  border-color: var(--v-background-darken4) !important;
+}
+.v-application .background--text.text--darken-4 {
+  color: var(--v-background-darken4) !important;
+  caret-color: var(--v-background-darken4) !important;
+}</style><noscript data-vue-tag="ssr"><style>.g-image--loading{display:none;}</style></noscript>
+  </head>
+  <body >
+    <div data-app="true" data-server-rendered="true" id="app" id="app" class="v-application v-application--is-ltr theme--dark"><div class="v-application--wrap"><header class="v-sheet v-sheet--tile theme--dark v-toolbar v-app-bar v-app-bar--elevate-on-scroll v-app-bar--fixed v-app-bar--hide-shadow primary" style="height:64px;margin-top:0px;transform:translateY(0px);left:0px;right:0px;"><div class="v-toolbar__content" style="height:64px;"><button type="button" class="primary v-btn v-btn--depressed theme--dark v-size--default"><span class="v-btn__content"><img src="/assets/img/logo.3bf5df7b.svg" class="svg" style="width:70px;height:30px;"></span></button><div class="spacer"></div><span class="v-tooltip v-tooltip--bottom"><!----><button type="button" class="primary v-btn v-btn--depressed v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate material-icons theme--dark">home</i></span></button></span><span class="v-tooltip v-tooltip--bottom"><!----><div class="v-menu"><button type="button" role="button" aria-haspopup="true" aria-expanded="false" class="primary v-btn v-btn--depressed v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate fas fa-newspaper theme--dark"></i></span></button><!----></div></span><span class="v-tooltip v-tooltip--bottom"><!----><div class="v-menu"><button type="button" role="button" aria-haspopup="true" aria-expanded="false" class="primary v-btn v-btn--depressed v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate far fa-lightbulb theme--dark"></i></span></button><!----></div></span><!----><!----><span class="v-tooltip v-tooltip--bottom"><!----><button type="button" class="primary v-btn v-btn--depressed v-btn--flat v-btn--icon v-btn--round theme--dark v-size--default"><span class="v-btn__content"><i aria-hidden="true" class="v-icon notranslate material-icons theme--dark">invert_colors</i></span></button></span></div></header><div class="container dark-container container--fluid color"><div class="container background"><div class="md-container"><h1 id="how-to-use-data-generators-in-tensorflow"><a href="#how-to-use-data-generators-in-tensorflow" aria-hidden="true"><span class="icon icon-link"></span></a>How to use data generators in tensorflow</h1>
+<hr>
+<h2 id="why-"><a href="#why-" aria-hidden="true"><span class="icon icon-link"></span></a>Why ?</h2>
+<p>Believe it or not, but loading the entire dataset in memory is <strong>NOT</strong> the best idea.<br>
+If you're dealing with a small dataset, that might work, but that is just a waste of resources, and worse if you're working on a huge dataset like the imageNet dataset, this won't work at all.</p>
+<h2 id="how-"><a href="#how-" aria-hidden="true"><span class="icon icon-link"></span></a>HOW ?</h2>
+<p>Python generators are lazy which means they are iterables that give you the data upon request, unlike regular lists that just store the data in memory all the time.</p>
+<p>tensorflow keras has a <code>Sequence</code> class that can be used for this purpose. <a class="mdlink" href="https://www.tensorflow.org/api_docs/python/tf/keras/utils/Sequence">Sequence Class API Reference</a><br>
+let's jump into it</p>
+<h2 id="scenario"><a href="#scenario" aria-hidden="true"><span class="icon icon-link"></span></a>Scenario</h2>
+<p>Working with images is a good example for this, so let's say that you have pictures of objects that you need to localize,<br>
+So your features are images and labels are (x, y, h, w) for coordinate and dimensions of the containing box, and the labels and image names are stored in a csv file.</p>
+<h2 id="data"><a href="#data" aria-hidden="true"><span class="icon icon-link"></span></a>Data</h2>
+<table>
+<thead>
+<tr>
+<th>image_file    </th>
+<th>x    </th>
+<th>y    </th>
+<th>w    </th>
+<th>h    </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>file1.png</td>
+<td>10</td>
+<td>20</td>
+<td>50</td>
+<td>50</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="code"><a href="#code" aria-hidden="true"><span class="icon icon-link"></span></a>Code</h2>
+<p>Let's define an initializer, the initializer is going to take the information needed to get the data such as:</p>
+<ul>
+<li>The csv file</li>
+<li>The directory containing all of the images</li>
+</ul>
+<p>It will also take the output shape of the batch</p>
+<ul>
+<li>The output size of each image</li>
+<li>The batch size</li>
+</ul>
+<pre class="language-python"><code class="language-python"><span class="token keyword">import</span> numpy <span class="token keyword">as</span> np
+<span class="token keyword">import</span> pandas <span class="token keyword">as</span> pd
+<span class="token keyword">import</span> matplotlib<span class="token punctuation">.</span>image <span class="token keyword">as</span> mpimg
+
+<span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>utils <span class="token keyword">import</span> Sequence
+
+<span class="token keyword">class</span> <span class="token class-name">DataGenerator</span><span class="token punctuation">(</span>Sequence<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> csv_file<span class="token punctuation">,</span> base_dir<span class="token punctuation">,</span> output_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token triple-quoted-string string">"""
+  Initializes a data generator object
+    :param csv_file: file in which image names and numeric labels are stored
+    :param base_dir: the directory in which all images are stored
+    :param output_size: image output size after preprocessing
+    :param shuffle: shuffle the data after each epoch
+    :param batch_size: The size of each batch returned by __getitem__
+  """</span>
+    self<span class="token punctuation">.</span>df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>csv_file<span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>base_dir <span class="token operator">=</span> base_dir
+    self<span class="token punctuation">.</span>output_size <span class="token operator">=</span> output_size
+    self<span class="token punctuation">.</span>shuffle <span class="token operator">=</span> shuffle
+    self<span class="token punctuation">.</span>batch_size <span class="token operator">=</span> batch_size
+    self<span class="token punctuation">.</span>on_epoch_end<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>
+<hr>
+<p>Now let's define some special methods starting with the one called in the initializer <code>on_epoch_end()</code> that is called after each epoch as the name may suggest, duh!</p>
+<p>We call this method in the initializer because we need the indeces attribute to be set at the begining of the first epoch, otherwise we will get an error telling us that the class has no attribute "indecies"</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">on_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  self<span class="token punctuation">.</span>indices <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token keyword">if</span> self<span class="token punctuation">.</span>shuffle<span class="token punctuation">:</span>
+    np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>self<span class="token punctuation">.</span>indices<span class="token punctuation">)</span></code></pre>
+<hr>
+<p>Now we need to define the length of the data, which is not the number of entries as you might think, it's actually the number of batches, this needs to be accessible by the <code>len</code> function in python so we need to define the <code>__len__</code> method.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>df<span class="token punctuation">)</span> <span class="token operator">/</span> self<span class="token punctuation">.</span>batch_size<span class="token punctuation">)</span></code></pre>
+<hr>
+<p>Now let's get serious, the fun part is in the next method which is <code>__getitem__</code>.<br>
+This function gets called on indexing or slicing like <code>data_generator[0]</code> or <code>data_generator[1:3]</code> and the index is passed as a parameter to it. Here we call it <code>idx</code></p>
+<p>In this function we shall load and preprocess the images.<br>
+This will only be fired when keras trys to load a batch, which will save our memory.</p>
+<p>You might think splitting this into multiple functions would be a good idea ... and you'd be totally right.<br>
+This function should return a preprocessed batch of data</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+  <span class="token comment">## Initializing Batch</span>
+  <span class="token comment">#  that one in the shape is just for a one channel images</span>
+  <span class="token comment"># if you want to use colored images you might want to set that to 3</span>
+  X <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">,</span> <span class="token operator">*</span>self<span class="token punctuation">.</span>output_size<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+  <span class="token comment"># (x, y, h, w)</span>
+  y <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+  <span class="token comment"># get the indices of the requested batch</span>
+  indices <span class="token operator">=</span> self<span class="token punctuation">.</span>indices<span class="token punctuation">[</span>idx<span class="token operator">*</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">:</span><span class="token punctuation">(</span>idx<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">]</span>
+
+  <span class="token keyword">for</span> i<span class="token punctuation">,</span> data_index <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>indices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    img_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>base_dir<span class="token punctuation">,</span>
+                self<span class="token punctuation">.</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>data_index<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    img <span class="token operator">=</span> mpimg<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    <span class="token comment">## this is where you preprocess the image</span>
+    <span class="token comment">## make sure to resize it to be self.output_size</span>
+
+    label <span class="token operator">=</span> self<span class="token punctuation">.</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>data_index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token comment">## if you have any preprocessing for</span>
+    <span class="token comment">## the labels too do it here</span>
+
+    X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">]</span> <span class="token operator">=</span> img
+    y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> label
+
+  <span class="token keyword">return</span> X<span class="token punctuation">,</span> y</code></pre>
+<hr>
+<p>Now you are ready to fit the model to this generator. You can also easily make a validation generator and validate your model against that, all you need to do is make a new instance of the <code>DataGenerator</code> class, and pass in the validation csv and base directory and you're good to go. That's why I love OOP.</p>
+<pre class="language-python"><code class="language-python"><span class="token keyword">from</span> tensorflow<span class="token punctuation">.</span>keras<span class="token punctuation">.</span>models <span class="token keyword">import</span> Sequential
+
+model <span class="token operator">=</span> Sequential<span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token comment">## define the model's architecture</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+train_gen <span class="token operator">=</span> DataGenerator<span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span>
+                          <span class="token string">"data"</span><span class="token punctuation">,</span>
+                          <span class="token punctuation">(</span><span class="token number">244</span><span class="token punctuation">,</span> <span class="token number">244</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+                          batch_size<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span>
+                          shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token comment">## compile the model first of course</span>
+
+<span class="token comment"># now let's train the model</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>train_gen<span class="token punctuation">,</span> epochs<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span>
+<span class="token comment">#  note you could also make a validation generator and pass it here like normal datasets</span>
+
+<span class="token comment"># back in the days you had to do this</span>
+<span class="token comment"># model.fit_generator(train_gen, ...)</span></code></pre>
+<hr>
+<h2 id="the-complete-code"><a href="#the-complete-code" aria-hidden="true"><span class="icon icon-link"></span></a>The complete code</h2>
+<pre class="language-python"><code class="language-python"><span class="token keyword">class</span> <span class="token class-name">DataGenerator</span><span class="token punctuation">(</span>Sequence<span class="token punctuation">)</span><span class="token punctuation">:</span>
+
+  <span class="token keyword">def</span> <span class="token function">__init__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> csv_file<span class="token punctuation">,</span> base_dir<span class="token punctuation">,</span> output_size<span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">False</span><span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token triple-quoted-string string">"""
+    Initializes a data generator object
+      :param csv_file: file in which image names and numeric labels are stored
+      :param base_dir: the directory in which all images are stored
+      :param output_size: image output size after preprocessing
+      :param shuffle: shuffle the data after each epoch
+      :param batch_size: The size of each batch returned by __getitem__
+    """</span>
+    self<span class="token punctuation">.</span>df <span class="token operator">=</span> pd<span class="token punctuation">.</span>read_csv<span class="token punctuation">(</span>csv_file<span class="token punctuation">)</span>
+    self<span class="token punctuation">.</span>base_dir <span class="token operator">=</span> base_dir
+    self<span class="token punctuation">.</span>output_size <span class="token operator">=</span> output_size
+    self<span class="token punctuation">.</span>shuffle <span class="token operator">=</span> shuffle
+    self<span class="token punctuation">.</span>batch_size <span class="token operator">=</span> batch_size
+    self<span class="token punctuation">.</span>on_epoch_end<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">on_epoch_end</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    self<span class="token punctuation">.</span>indices <span class="token operator">=</span> np<span class="token punctuation">.</span>arange<span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>df<span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token keyword">if</span> self<span class="token punctuation">.</span>shuffle<span class="token punctuation">:</span>
+      np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>shuffle<span class="token punctuation">(</span>self<span class="token punctuation">.</span>indices<span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">__len__</span><span class="token punctuation">(</span>self<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>df<span class="token punctuation">)</span> <span class="token operator">/</span> self<span class="token punctuation">.</span>batch_size<span class="token punctuation">)</span>
+
+  <span class="token keyword">def</span> <span class="token function">__getitem__</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> idx<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment">## Initializing Batch</span>
+    <span class="token comment">#  that one in the shape is just for a one channel images</span>
+    <span class="token comment"># if you want to use colored images you might want to set that to 3</span>
+    X <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">,</span> <span class="token operator">*</span>self<span class="token punctuation">.</span>output_size<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    <span class="token comment"># (x, y, h, w)</span>
+    y <span class="token operator">=</span> np<span class="token punctuation">.</span>empty<span class="token punctuation">(</span><span class="token punctuation">(</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+    <span class="token comment"># get the indices of the requested batch</span>
+    indices <span class="token operator">=</span> self<span class="token punctuation">.</span>indices<span class="token punctuation">[</span>idx<span class="token operator">*</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">:</span><span class="token punctuation">(</span>idx<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">*</span>self<span class="token punctuation">.</span>batch_size<span class="token punctuation">]</span>
+
+    <span class="token keyword">for</span> i<span class="token punctuation">,</span> data_index <span class="token keyword">in</span> <span class="token builtin">enumerate</span><span class="token punctuation">(</span>indices<span class="token punctuation">)</span><span class="token punctuation">:</span>
+      img_path <span class="token operator">=</span> os<span class="token punctuation">.</span>path<span class="token punctuation">.</span>join<span class="token punctuation">(</span>self<span class="token punctuation">.</span>base_dir<span class="token punctuation">,</span>
+                  self<span class="token punctuation">.</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>data_index<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+      img <span class="token operator">=</span> mpimg<span class="token punctuation">.</span>imread<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      img <span class="token operator">=</span> cv2<span class="token punctuation">.</span>cvtColor<span class="token punctuation">(</span>img<span class="token punctuation">,</span> cv2<span class="token punctuation">.</span>COLOR_RGB2GRAY<span class="token punctuation">)</span> <span class="token comment"># to reduce it to one channel to match the shape</span>
+      <span class="token comment">## this is where you preprocess the image</span>
+      <span class="token comment">## make sure to resize it to be self.output_size</span>
+
+      label <span class="token operator">=</span> self<span class="token punctuation">.</span>df<span class="token punctuation">.</span>iloc<span class="token punctuation">[</span>data_index<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">.</span>to_numpy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token comment">## if you have any preprocessing for</span>
+      <span class="token comment">## the labels too do it here</span>
+
+      X<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token punctuation">]</span> <span class="token operator">=</span> img
+      y<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> label
+
+    <span class="token keyword">return</span> X<span class="token punctuation">,</span> y
+
+
+<span class="token comment">## Defining and training the model</span>
+
+model <span class="token operator">=</span> Sequential<span class="token punctuation">(</span><span class="token punctuation">[</span>
+  <span class="token comment">## define the model's architecture</span>
+<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+train_gen <span class="token operator">=</span> DataGenerator<span class="token punctuation">(</span><span class="token string">"data.csv"</span><span class="token punctuation">,</span> <span class="token string">"data"</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">244</span><span class="token punctuation">,</span> <span class="token number">244</span><span class="token punctuation">)</span><span class="token punctuation">,</span> batch_size<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">,</span> shuffle<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+<span class="token comment">## compile the model first of course</span>
+
+<span class="token comment"># now let's train the model</span>
+model<span class="token punctuation">.</span>fit<span class="token punctuation">(</span>train_gen<span class="token punctuation">,</span> epochs<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span></code></pre>
+<hr>
+<p>And that's it.. you've just created your dataset generator that loads the data into memory batch by batch instead of the whole thing at once.<br>
+I hope this was useful.</p>
+<hr>
+<p><a class="mdlink" href="https://stanford.edu/~shervine/blog/keras-how-to-generate-data-on-the-fly">Reference Article</a></p>
+<p><a class="mdlink" href="https://github.com/mahmoudyusof/facial_keypoint_detection">My Notebooks</a></p>
+</div></div></div><footer class="v-footer primary footer v-sheet v-sheet--tile theme--dark v-footer--fixed v-footer--padless" style="left:0px;right:0px;bottom:0px;"><div class="container"><div class="row"><div class="col-sm-4 col-12"><div role="list" class="v-list primary v-sheet v-sheet--tile theme--dark v-list--dense v-list--flat"><div class="v-subheader theme--dark">Social media</div><div role="listbox" class="v-item-group theme--dark v-list-item-group text--text"><a tabindex="0" href="https://www.linkedin.com/in/mahmoud-yusof-a39ab5151/" target="_blank" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate fab fa-linkedin theme--dark"></i></div><div class="v-list-item__content"><div class="v-list-item__title">I share achievements</div></div></a><a tabindex="0" href="https://twitter.com/mahmoudyusof" target="_blank" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate fab fa-twitter theme--dark"></i></div><div class="v-list-item__content"><div class="v-list-item__title">I share articles</div></div></a><a tabindex="0" href="https://www.facebook.com/mahmoud.youssef27/" target="_blank" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate fab fa-facebook theme--dark"></i></div><div class="v-list-item__content"><div class="v-list-item__title">I share memes</div></div></a></div></div></div><div class="col-sm-4 col-12"><div role="list" class="v-list primary v-sheet v-sheet--tile theme--dark v-list--dense v-list--flat"><div class="v-subheader theme--dark">Contact Information</div><div role="listbox" class="v-item-group theme--dark v-list-item-group text--text"><a tabindex="0" href="mailto:mahmoud.yusof27@gmail.com" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate material-icons theme--dark">mail_outline</i></div><div class="v-list-item__content"><div class="v-list-item__title">mahmoud.yusof27@gmail.com</div></div></a><div tabindex="0" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate fas fa-phone theme--dark"></i></div><div class="v-list-item__content"><div class="v-list-item__title">+20 111 601 0514</div></div></div></div></div></div><div class="col-sm-4 col-12"><div role="list" class="v-list primary v-sheet v-sheet--tile theme--dark v-list--dense v-list--flat"><div class="v-subheader theme--dark">Credits</div><div role="listbox" class="v-item-group theme--dark v-list-item-group text--text"><a tabindex="0" href="https://unsplash.com/@brenomachado" target="_blank" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate material-icons theme--dark">image</i></div><div class="v-list-item__content"><div class="v-list-item__title">@brenomachado</div></div></a><a tabindex="0" href="https://unsplash.com/@epicantus" target="_blank" role="listitem" aria-selected="false" class="v-list-item v-list-item--link theme--dark"><div class="v-list-item__icon"><i aria-hidden="true" class="v-icon notranslate material-icons theme--dark">image</i></div><div class="v-list-item__content"><div class="v-list-item__title">@epicantus</div></div></a></div></div></div></div><div class="row px-5"><p class="copy">
+          Copy rights © 2020, Designed and created by Mahmoud Youssef
+        </p></div></div></footer></div></div>
+    <script src="/assets/js/app.640e4b72.js" defer></script><script src="/assets/js/page--src--templates--article-vue.e8a69820.js" defer></script>
+  </body>
+</html>
